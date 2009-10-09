@@ -1,0 +1,1 @@
+CreateObject("Wscript.Shell").Run("nmake clean"),0, False
