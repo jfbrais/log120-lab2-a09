@@ -32,7 +32,7 @@ public class DecoupeChaine
 	 * @param cmd
 	 * @return info
 	 */
-	public InformationsPaquet Decouper(String cmd)
+	public InformationsPaquet decouper(String cmd)
 	{
 		String type = null;
 		int nseq = 0;

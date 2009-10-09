@@ -39,7 +39,7 @@ public class Connection
 	 * 
 	 * @return boolean
 	 */
-	public boolean SeConnecter()
+	public boolean seConnecter()
 	{
 		String serverIP;
 		Integer port;
@@ -87,7 +87,7 @@ public class Connection
 	 * 
 	 * @return boolean
 	 */
-	public boolean SeDeconnecter()
+	public boolean seDeconnecter()
 	{
 		try
 		{
@@ -110,7 +110,7 @@ public class Connection
 	 * 
 	 * @return cmd
 	 */
-	public String GetForme()
+	public String getForme()
 	{
 		String cmd = null;
 		try
@@ -119,6 +119,7 @@ public class Connection
 		}
 		catch (IOException e1)
 		{
+			JOptionPane.showMessageDialog(null, "Cannot receive shape.");
 		}
 
 		output.println("GET");

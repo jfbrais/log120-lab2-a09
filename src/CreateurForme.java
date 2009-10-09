@@ -26,7 +26,7 @@ public class CreateurForme
 	 * @param paquet
 	 * @return nouvelleCreation
 	 */
-	public Forme CreerForme(InformationsPaquet paquet)
+	public Forme creerForme(InformationsPaquet paquet)
 	{		
 		Forme nouvelleCreation = null;
 
