@@ -238,19 +238,19 @@ public class ApplicationSwing extends JFrame
 		{
 			while (workerActif && connected)
 			{
-				String cmd = maConnection.GetForme();
+				String cmd = maConnection.getForme();
 				if (cmd != null)
 				{
 					/*Crée un paquet d'information avec la chaine,
 					 *Crée une Forme avec le paquet d'information,
 					 *Ajoute la forme au stocker de forme*/
-					monStocker.stocker(new CreateurForme().CreerForme(new DecoupeChaine().Decouper(cmd)));
+					monStocker.stocker(new CreateurForme().creerForme(new DecoupeChaine().decouper(cmd)));
 					
 					repaint();
 				}
 				else
 				{
-					connected = maConnection.SeDeconnecter();
+					connected = maConnection.seDeconnecter();
 				}
 				
 				try
@@ -292,7 +292,7 @@ public class ApplicationSwing extends JFrame
 					JOptionPane.showMessageDialog(null,
 							"Quit delay interrupted");
 				}
-				maConnection.SeDeconnecter();
+				maConnection.seDeconnecter();
 			}
 
 			System.exit(0);
@@ -345,7 +345,7 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			connected = maConnection.SeConnecter();
+			connected = maConnection.seConnecter();
 			rafraichirMenus();
 		}
 	}
@@ -375,7 +375,7 @@ public class ApplicationSwing extends JFrame
 						"Close connection delay interrupted");
 			}
 
-			connected = maConnection.SeDeconnecter();
+			connected = maConnection.seDeconnecter();
 			rafraichirMenus();
 		}
 	}
@@ -407,7 +407,7 @@ public class ApplicationSwing extends JFrame
 						JOptionPane.showMessageDialog(null,
 								"Quit delay interrupted");
 					}
-					connected = maConnection.SeDeconnecter();
+					connected = maConnection.seDeconnecter();
 				}
 			}
 		});
