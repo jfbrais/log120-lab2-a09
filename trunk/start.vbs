@@ -1,0 +1,1 @@
+CreateObject("Wscript.Shell").Run("java -cp ca.etsmtl.log.util.jar;bin ApplicationSwing"),0, False

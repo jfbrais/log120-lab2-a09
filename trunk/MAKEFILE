@@ -1,0 +1,67 @@
+#####################################################
+# Cours :             LOG120
+# Session :           Saison automne 2009
+# Groupe :            03
+# Projet :            Laboratoire #1
+# Étudiant(e)(s) :    Gabriel Desmarais
+# Code(s) perm. :     DESG24078908
+# Professeur :        Jocelyn Benoît
+# Chargé de labo.:    Vincent Carrier
+# 					  Yanick Rochon
+# Nom du fichier :	  MAKEFILE					 
+# Date créée :        2009-09-29
+# Date dern. modif. : 2009-09-29
+######################################################
+# Historique des modifications
+######################################################
+# aaaa-mm-jj         Version initiale
+######################################################
+
+#ca.etsmtl.log.util.jar
+
+all: ApplicationSwing.class
+
+ApplicationSupport.class: src\ApplicationSupport.java 
+ 	javac -cp bin src\ApplicationSupport.java -d bin
+
+ApplicationSwing.class: src\ApplicationSwing.java InformationsPaquet.class DecoupeChaine.class SwingWorker.class Forme.class Ligne.class Ovale.class Rectangle.class Cercle.class Carre.class CreateurForme.class FormeStocker.class Connection.class ApplicationSupport.class
+ 	javac -cp bin src\ApplicationSwing.java -d bin
+
+Carre.class: src\Carre.java 
+ 	javac -cp bin src\Carre.java -d bin
+ 	
+Cercle.class: src\Cercle.java 
+ 	javac -cp bin src\Cercle.java -d bin
+ 	
+Connection.class: src\Connection.java 
+ 	javac -cp bin src\Connection.java -d bin
+ 	
+CreateurForme.class: src\CreateurForme.java 
+ 	javac -cp bin src\CreateurForme.java -d bin
+ 	
+DecoupeChaine.class: src\DecoupeChaine.java
+ 	javac -cp ca.etsmtl.log.util.jar;bin src\DecoupeChaine.java -d bin
+ 	
+Forme.class: src\Forme.java 
+ 	javac -cp bin src\Forme.java -d bin
+ 	
+FormeStocker.class: src\FormeStocker.java
+	javac -cp bin src\FormeStocker.java -d bin
+ 	
+InformationsPaquet.class: src\InformationsPaquet.java 
+ 	javac -cp bin src\InformationsPaquet.java -d bin
+ 	
+Ligne.class: src\Ligne.java 
+ 	javac -cp bin src\Ligne.java -d bin
+ 	
+Ovale.class: src\Ovale.java 
+ 	javac -cp bin src\Ovale.java -d bin
+ 	
+Rectangle.class: src\Rectangle.java 
+ 	javac -cp bin src\Rectangle.java -d bin
+ 	
+SwingWorker.class: src\SwingWorker.java
+	javac -cp bin src\SwingWorker.java -d bin
+
+clean:
+ 	del bin\*.class
