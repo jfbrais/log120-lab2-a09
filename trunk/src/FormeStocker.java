@@ -20,43 +20,43 @@
 
 public class FormeStocker
 {
+	private Forme head;
 	
-	private Forme[] tableau = new Forme[10];
-	
-	public void stocker(Forme newForme)
+	public void add(Forme newForme)
 	{
-		int emplacement = 0;
-		boolean noMore = false;
+		Forme last;
+		if (head == null)
+		{
+			head = newForme;
+			return;
+		}
 		
-		/* Trouve l'emplcement vide */ 
-		while (emplacement < 10 && !noMore)
+		last = head;
+		int number=1;
+		while (last.getNext()!=null)
 		{
-			if (tableau[emplacement] == null)
-			{
-				noMore = true;
-			}
-			else
-			{
-				emplacement++;
-			}
+			last = last.getNext();
+			number++;
 		}
-
-		/* S'il n'y en a pas, transfère les formes et utilise le dernier emplacement */ 
-		if (!noMore)
+		
+		if (number>9)
 		{
-			for (int i = 0; i < 9; i++)
-			{
-				tableau[i] = tableau[i + 1];
-			}
-			emplacement = 9;
+			head = head.getNext();
 		}
-
-		/* Ajoute la forme au tableau à l'aide du CreateurForme */ 
-		tableau[emplacement] = newForme;
+		last.setNext(newForme);
+		newForme.setPrevious(last);
 	}
 	
-	public Forme getTableau(int emplacement)
+	public Forme getForme(int emplacement)
 	{
-		return tableau[emplacement];
+		Forme node = head;
+		for (int i=0;i<emplacement;i++)
+		{
+			if (node != null)
+				node = node.getNext();
+			else
+				return null;
+		}
+		return node;
 	}
 }

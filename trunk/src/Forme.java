@@ -25,6 +25,8 @@ import java.awt.Graphics;
 public abstract class Forme
 {
 	protected Color couleur;
+	private Forme previous,
+				  next;
 
 	/**
 	 * Méthode abstraite à reféfinir dans les autres classes héritant de Forme
@@ -32,4 +34,36 @@ public abstract class Forme
 	 * @param g
 	 */
 	public abstract void dessiner(Graphics g);
+
+	/**
+	 * @param previous
+	 */
+	public void setPrevious(Forme previous)
+	{
+		this.previous = previous;
+	}
+
+	/**
+	 * @return previous
+	 */
+	public Forme getPrevious()
+	{
+		return previous;
+	}
+
+	/**
+	 * @param next
+	 */
+	public void setNext(Forme next)
+	{
+		this.next = next;
+	}
+
+	/**
+	 * @return next
+	 */
+	public Forme getNext()
+	{
+		return next;
+	}
 }
