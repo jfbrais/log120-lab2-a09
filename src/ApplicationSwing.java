@@ -137,6 +137,10 @@ public class ApplicationSwing extends JFrame
 	private static final int MENU_DESSIN_DEMARRER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
 
 	private static final char MENU_DESSIN_DEMARRER_TOUCHE_RACC = KeyEvent.VK_D;
+	
+	private static final int MENU_FICHIER_OBTENIR_TOUCHE_MASK = ActionEvent.CTRL_MASK;
+	
+	private static final char MENU_FICHIER_OBTENIR_TOUCHE_RACC = KeyEvent.VK_X;
 
 	private static final int MENU_FICHIER_QUITTER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
 
@@ -151,6 +155,7 @@ public class ApplicationSwing extends JFrame
 	private static final char MENU_CONNECTION_DECONNECTER_TOUCHE_RACC = KeyEvent.VK_V;
 
 	private static final String MENU_FICHIER_TITRE = "app.frame.menus.file.title",
+			MENU_FICHIER_OBTENIR = "app.frame.menus.file.get",
 			MENU_FICHIER_QUITTER = "app.frame.menus.file.exit",
 			MENU_CONNECTION_TITRE = "app.frame.menus.connection.title",
 			MENU_CONNECTION_CONNECTER = "app.frame.menus.connection.connect",
@@ -202,7 +207,7 @@ public class ApplicationSwing extends JFrame
 		public void actionPerformed(ActionEvent arg0)
 		{
 			workerActif = false;
-			rafraichirMenus();
+			//rafraichirMenus();
 		}
 	}
 
@@ -222,13 +227,13 @@ public class ApplicationSwing extends JFrame
 				{
 					dessinerFormes();
 					workerActif = false;
-					rafraichirMenus();
+					//rafraichirMenus();
 					return new Integer(0);
 				}
 			};
 			worker.start();
 			workerActif = true;
-			rafraichirMenus();
+			//rafraichirMenus();
 		}
 
 		/**
@@ -244,7 +249,7 @@ public class ApplicationSwing extends JFrame
 					/*Crée un paquet d'information avec la chaine,
 					 *Crée une Forme avec le paquet d'information,
 					 *Ajoute la forme au stocker de forme*/
-					monStocker.stocker(new CreateurForme().creerForme(new DecoupeChaine().decouper(cmd)));
+					monStocker.add(new CreateurForme().creerForme(new DecoupeChaine().decouper(cmd)));
 					
 					repaint();
 				}
@@ -263,6 +268,17 @@ public class ApplicationSwing extends JFrame
 							.showMessageDialog(null, "GET delay interrupted");
 				}
 			}
+		}
+	}
+	
+	class GetListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			workerActif = true;
+			for (int i=0;i<10;i++)
+				dessinerFormes();
+			workerActif = false;
 		}
 	}
 
@@ -327,9 +343,9 @@ public class ApplicationSwing extends JFrame
 
 			for (int i = 0; i < 10; i++)
 			{
-				if (monStocker.getTableau(i) != null)
+				if (monStocker.getForme(i) != null)
 				{
-					monStocker.getTableau(i).dessiner(g);
+					monStocker.getForme(i).dessiner(g);
 				}
 			}
 		}
@@ -346,7 +362,7 @@ public class ApplicationSwing extends JFrame
 		public void actionPerformed(ActionEvent arg0)
 		{
 			connected = maConnection.seConnecter();
-			rafraichirMenus();
+			//rafraichirMenus();
 		}
 	}
 
@@ -462,12 +478,29 @@ public class ApplicationSwing extends JFrame
 	{
 		JMenu menu = ApplicationSupport.addMenu(this, MENU_FICHIER_TITRE,
 				new String[]
-				{ MENU_FICHIER_QUITTER });
+				{ MENU_FICHIER_OBTENIR, MENU_FICHIER_QUITTER });
 
-		menu.getItem(0).addActionListener(new QuitterListener());
+		menu.getItem(0).addActionListener(new GetListener());
 		menu.getItem(0).setAccelerator(
+				KeyStroke.getKeyStroke(MENU_FICHIER_OBTENIR_TOUCHE_RACC,
+						MENU_FICHIER_OBTENIR_TOUCHE_MASK));
+		
+		menu.getItem(1).addActionListener(new QuitterListener());
+		menu.getItem(1).setAccelerator(
 				KeyStroke.getKeyStroke(MENU_FICHIER_QUITTER_TOUCHE_RACC,
 						MENU_FICHIER_QUITTER_TOUCHE_MASK));
+
+		return menu;
+	}
+	
+	/* Créer le menu "Sort". */
+	private JMenu creerMenuSort()
+	{
+		JMenu menu = ApplicationSupport.addMenu(this, MENU_AIDE_TITRE,
+				new String[]
+				{ MENU_AIDE_PROPOS });
+
+		menu.getItem(0).addActionListener(new AProposDeListener());
 
 		return menu;
 	}
@@ -487,10 +520,28 @@ public class ApplicationSwing extends JFrame
 	/* Activer ou désactiver les items du menu selon la sélection. */
 	private void rafraichirMenus()
 	{
-		demarrerMenuItem.setEnabled(!workerActif && connected);
-		arreterMenuItem.setEnabled(workerActif);
-		connectionMenuItem.setEnabled(!connected);
-		deconnectionMenuItem.setEnabled(connected);
+//		demarrerMenuItem.setEnabled(!workerActif && connected);
+//		arreterMenuItem.setEnabled(workerActif);
+//		connectionMenuItem.setEnabled(!connected);
+//		deconnectionMenuItem.setEnabled(connected);
+	}
+	
+	private void dessinerFormes()
+	{
+		String cmd = maConnection.getForme();
+		if (cmd != null)
+		{
+			/*Crée un paquet d'information avec la chaine,
+			 *Crée une Forme avec le paquet d'information,
+			 *Ajoute la forme au stocker de forme*/
+			monStocker.add(new CreateurForme().creerForme(new DecoupeChaine().decouper(cmd)));
+			
+			repaint();
+		}
+		else
+		{
+			connected = maConnection.seDeconnecter();
+		}
 	}
 
 	/* Lancer l'exécution de l'application. */
@@ -502,9 +553,9 @@ public class ApplicationSwing extends JFrame
 
 		cadre.creerMenuFichier();
 		cadre.creerMenuConnection();
-		cadre.creerMenuDessiner();
+		cadre.creerMenuSort();
 		cadre.creerMenuAide();
-		cadre.rafraichirMenus();
+		//cadre.rafraichirMenus();
 
 		/* Centrer la fenêtre. */
 		cadre.setLocationRelativeTo(null);
