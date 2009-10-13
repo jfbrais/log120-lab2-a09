@@ -170,7 +170,7 @@ public class ApplicationSwing extends JFrame
 
 	private static final long serialVersionUID = 1L;
 
-	private boolean workerActif, connected;
+	private boolean connected;
 
 	private JMenuItem arreterMenuItem, demarrerMenuItem, connectionMenuItem,
 			deconnectionMenuItem;
@@ -195,90 +195,27 @@ public class ApplicationSwing extends JFrame
 					JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-
-	/**
-	 * Traiter l'item "Stop".
-	 * 
-	 * @author Gab
-	 *
-	 */
-	class ArreterListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent arg0)
-		{
-			workerActif = false;
-			//rafraichirMenus();
-		}
-	}
-
-	/**
-	 * Traiter l'item "Start".
-	 * 
-	 * @author Gab
-	 *
-	 */
-	class DemarrerListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent arg0)
-		{
-			final SwingWorker worker = new SwingWorker()
-			{
-				public Object construct()
-				{
-					dessinerFormes();
-					workerActif = false;
-					//rafraichirMenus();
-					return new Integer(0);
-				}
-			};
-			worker.start();
-			workerActif = true;
-			//rafraichirMenus();
-		}
-
-		/**
-		 * Boucle qui récupère les formes et les affiches.
-		 */
-		protected void dessinerFormes()
-		{
-			while (workerActif && connected)
-			{
-				String cmd = maConnection.getForme();
-				if (cmd != null)
-				{
-					/*Crée un paquet d'information avec la chaine,
-					 *Crée une Forme avec le paquet d'information,
-					 *Ajoute la forme au stocker de forme*/
-					monStocker.add(new CreateurForme().creerForme(new DecoupeChaine().decouper(cmd)));
-					
-					repaint();
-				}
-				else
-				{
-					connected = maConnection.seDeconnecter();
-				}
-				
-				try
-				{
-					Thread.sleep(DELAI_ENTRE_FORMES_MSEC);
-				}
-				catch (InterruptedException e)
-				{
-					JOptionPane
-							.showMessageDialog(null, "GET delay interrupted");
-				}
-			}
-		}
-	}
 	
 	class GetListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			workerActif = true;
+			connected = maConnection.seConnecter();
+			
 			for (int i=0;i<10;i++)
 				dessinerFormes();
-			workerActif = false;
+			
+			try
+			{
+				Thread.sleep(DELAI_DECONNECTER_MSEC);
+			}
+			catch (InterruptedException e)
+			{
+				JOptionPane.showMessageDialog(null,
+						"Close connection delay interrupted");
+			}
+
+			connected = maConnection.seDeconnecter();
 		}
 	}
 
@@ -292,11 +229,6 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			if (workerActif)
-			{
-				workerActif = false;
-			}
-
 			if (connected)
 			{
 				try
@@ -367,36 +299,6 @@ public class ApplicationSwing extends JFrame
 	}
 
 	/**
-	 * Traiter l'item "Deconnect".
-	 * 
-	 * @author Gab
-	 *
-	 */
-	class DeconnecterListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent arg0)
-		{
-			if (workerActif)
-			{
-				workerActif = false;
-			}
-
-			try
-			{
-				Thread.sleep(DELAI_DECONNECTER_MSEC);
-			}
-			catch (InterruptedException e)
-			{
-				JOptionPane.showMessageDialog(null,
-						"Close connection delay interrupted");
-			}
-
-			connected = maConnection.seDeconnecter();
-			rafraichirMenus();
-		}
-	}
-
-	/**
 	 *  Constructeur - Créer le cadre dans lequel les formes sont dessinées.
 	 */
 	public ApplicationSwing()
@@ -407,11 +309,6 @@ public class ApplicationSwing extends JFrame
 		{
 			public void windowClosing(WindowEvent closing)
 			{
-				if (workerActif)
-				{
-					workerActif = false;
-				}
-
 				if (connected)
 				{
 					try
@@ -427,50 +324,6 @@ public class ApplicationSwing extends JFrame
 				}
 			}
 		});
-	}
-
-	/* Créer le menu "Connect". */
-	private JMenu creerMenuConnection()
-	{
-		JMenu menu = ApplicationSupport.addMenu(this, MENU_CONNECTION_TITRE,
-				new String[]
-				{ MENU_CONNECTION_CONNECTER, MENU_CONNECTION_DECONNECTER });
-
-		connectionMenuItem = menu.getItem(0);
-		connectionMenuItem.addActionListener(new ConnecterListener());
-		connectionMenuItem.setAccelerator(KeyStroke.getKeyStroke(
-				MENU_CONNECTION_CONNECTER_TOUCHE_RACC,
-				MENU_CONNECTION_CONNECTER_TOUCHE_MASK));
-
-		deconnectionMenuItem = menu.getItem(1);
-		deconnectionMenuItem.addActionListener(new DeconnecterListener());
-		deconnectionMenuItem.setAccelerator(KeyStroke.getKeyStroke(
-				MENU_CONNECTION_DECONNECTER_TOUCHE_RACC,
-				MENU_CONNECTION_DECONNECTER_TOUCHE_MASK));
-
-		return menu;
-	}
-
-	/* Créer le menu "Draw". */
-	private JMenu creerMenuDessiner()
-	{
-		JMenu menu = ApplicationSupport.addMenu(this, MENU_DESSIN_TITRE,
-				new String[]
-				{ MENU_DESSIN_DEMARRER, MENU_DESSIN_ARRETER });
-
-		demarrerMenuItem = menu.getItem(0);
-		demarrerMenuItem.addActionListener(new DemarrerListener());
-		demarrerMenuItem.setAccelerator(KeyStroke.getKeyStroke(
-				MENU_DESSIN_DEMARRER_TOUCHE_RACC,
-				MENU_DESSIN_DEMARRER_TOUCHE_MASK));
-
-		arreterMenuItem = menu.getItem(1);
-		arreterMenuItem.addActionListener(new ArreterListener());
-		arreterMenuItem.setAccelerator(KeyStroke.getKeyStroke(
-				MENU_DESSIN_ARRETER_TOUCHE_RACC,
-				MENU_DESSIN_ARRETER_TOUCHE_MASK));
-
-		return menu;
 	}
 
 	/* Créer le menu "File". */
@@ -516,15 +369,6 @@ public class ApplicationSwing extends JFrame
 
 		return menu;
 	}
-
-	/* Activer ou désactiver les items du menu selon la sélection. */
-	private void rafraichirMenus()
-	{
-//		demarrerMenuItem.setEnabled(!workerActif && connected);
-//		arreterMenuItem.setEnabled(workerActif);
-//		connectionMenuItem.setEnabled(!connected);
-//		deconnectionMenuItem.setEnabled(connected);
-	}
 	
 	private void dessinerFormes()
 	{
@@ -552,7 +396,6 @@ public class ApplicationSwing extends JFrame
 		ApplicationSwing cadre = new ApplicationSwing();
 
 		cadre.creerMenuFichier();
-		cadre.creerMenuConnection();
 		cadre.creerMenuSort();
 		cadre.creerMenuAide();
 		//cadre.rafraichirMenus();
