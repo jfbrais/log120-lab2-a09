@@ -17,91 +17,166 @@ import java.text.MessageFormat;
 import java.util.*;
 import javax.swing.*;
 
-public final class ApplicationSupport {
-   static private final String PREFS_BUNDLE_BASENAME = "prefs";
-   static private final String BUNDLE_BASENAME = "app", PREFERRED_LOCALE_KEY = "locale";
+import com.sun.corba.se.impl.protocol.giopmsgheaders.MessageBase;
 
-   static private final JPanel STATUS_AREA = new JPanel();
-   static private final JLabel STATUS = new JLabel();
-   static private ResourceBundle preferences, resources;
-   static private Locale locale;
+public final class ApplicationSupport
+{
+	static private final String PREFS_BUNDLE_BASENAME = "prefs";
+	static private final String BUNDLE_BASENAME = "app",
+			PREFERRED_LOCALE_KEY = "locale";
 
-   static {
-      try {
-         preferences = ResourceBundle.getBundle(PREFS_BUNDLE_BASENAME);
-         locale = new Locale(preferences.getString(PREFERRED_LOCALE_KEY));
-      }
-      catch(java.util.MissingResourceException ex) {
-         System.err.println("ERROR: cannot find preferences properties file " + 
-                            BUNDLE_BASENAME);
-      }
+	static private final JPanel STATUS_AREA = new JPanel();
+	static private final JLabel STATUS = new JLabel();
+	static private ResourceBundle preferences, resources;
+	static private Locale locale;
 
-      try {
-         resources = ResourceBundle.getBundle(BUNDLE_BASENAME, locale);
-      }
-      catch(java.util.MissingResourceException ex) {
-         System.err.println("ERROR: cannot find properties file for " + BUNDLE_BASENAME);
-      }
+	static
+	{
+		try
+		{
+			preferences = ResourceBundle.getBundle(PREFS_BUNDLE_BASENAME);
+			locale = new Locale(preferences.getString(PREFERRED_LOCALE_KEY));
+		}
+		catch (java.util.MissingResourceException ex)
+		{
+			System.err
+					.println("ERROR: cannot find preferences properties file "
+							+ BUNDLE_BASENAME);
+		}
 
-   };
+		try
+		{
+			resources = ResourceBundle.getBundle(BUNDLE_BASENAME, locale);
+		}
+		catch (java.util.MissingResourceException ex)
+		{
+			System.err.println("ERROR: cannot find properties file for "
+					+ BUNDLE_BASENAME);
+		}
 
-   // disallow direct instantiation
-   private ApplicationSupport() {}
-   
-   public static void launch(final JFrame jFrame, String title,
-                       final int xBounds, final int yBounds, 
-                       final int width, int height) {
-      jFrame.setTitle(title);
-      jFrame.setBounds(xBounds,yBounds,width,height);
-      jFrame.setVisible(true);
-      jFrame.setResizable(true);
+	};
 
-      STATUS.setHorizontalAlignment(JLabel.LEFT);
+	// disallow direct instantiation
+	private ApplicationSupport()
+	{
+	}
 
-      STATUS_AREA.setBorder(BorderFactory.createEtchedBorder());
-      STATUS_AREA.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
-      STATUS_AREA.add(STATUS);
+	public static void launch(final JFrame jFrame, String title,
+			final int xBounds, final int yBounds, final int width, int height)
+	{
+		jFrame.setTitle(title);
+		jFrame.setBounds(xBounds, yBounds, width, height);
+		jFrame.setVisible(true);
+		jFrame.setResizable(true);
 
-      jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		STATUS.setHorizontalAlignment(JLabel.LEFT);
 
-      jFrame.addWindowListener(new WindowAdapter() {
-         public void windowClosed(WindowEvent event) {
-            System.exit(0);
-         }
-      });
-   }
-   public static Locale getLocale() {
-      return locale;
-   }
-   public static JMenu addMenu(final JFrame jFrame, String titleKey,
-                               String[] itemKeys) {
+		STATUS_AREA.setBorder(BorderFactory.createEtchedBorder());
+		STATUS_AREA.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		STATUS_AREA.add(STATUS);
 
-      JMenuBar menuBar = jFrame.getJMenuBar();
-      if(menuBar == null) {
-         menuBar = new JMenuBar();
-         jFrame.setJMenuBar(menuBar);
-      }
+		jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-      JMenu menu = new JMenu(ApplicationSupport.getResource(titleKey));
+		jFrame.addWindowListener(new WindowAdapter()
+		{
+			public void windowClosed(WindowEvent event)
+			{
+				System.exit(0);
+			}
+		});
+	}
 
-      for(int i=0; i < itemKeys.length; ++i) {
-         menu.add(new JMenuItem(ApplicationSupport.getResource(itemKeys[i])));
-      }
-      menuBar.add(menu);
-      return menu;
-   }
-   public static JPanel getStatusArea() {
-      return STATUS_AREA;
-   }
-   public static void showStatus(String statusString) {
-      STATUS.setText(statusString);
-   }
-   public static String getResource(String key) {
-      return (resources == null) ? null : resources.getString(key);
-   }
-   public static String formatMessage(String patternKey, String[] params) {
-      String pattern = ApplicationSupport.getResource(patternKey);
-      MessageFormat fmt = new MessageFormat(pattern);
-      return fmt.format(params);
-   }
+	public static Locale getLocale()
+	{
+		return locale;
+	}
+
+	public static JMenu addMenu(final JFrame jFrame, String titleKey,
+			String[] itemKeys)
+	{
+
+		JMenuBar menuBar = jFrame.getJMenuBar();
+		if (menuBar == null)
+		{
+			menuBar = new JMenuBar();
+			jFrame.setJMenuBar(menuBar);
+		}
+
+		JMenu menu = new JMenu(ApplicationSupport.getResource(titleKey));
+
+		for (int i = 0; i < itemKeys.length; ++i)
+		{
+			menu
+					.add(new JMenuItem(ApplicationSupport
+							.getResource(itemKeys[i])));
+		}
+		menuBar.add(menu);
+		return menu;
+	}
+
+	public static JMenu addRadioButton(final JFrame jFrame, String titleKey,
+			String[] itemKeys)
+	{
+
+		JMenuBar menuBar = jFrame.getJMenuBar();
+		if (menuBar == null)
+		{
+			menuBar = new JMenuBar();
+			jFrame.setJMenuBar(menuBar);
+		}
+
+		ButtonGroup myGroup = new ButtonGroup();
+		JMenu menu = new JMenu(ApplicationSupport.getResource(titleKey));
+
+		for (int i = 0; i < itemKeys.length; ++i)
+		{
+			if (i % 2 == 0 && i != 0)
+			{
+				menu.addSeparator();
+			}
+
+			JRadioButtonMenuItem myRadio = new JRadioButtonMenuItem(
+					ApplicationSupport.getResource(itemKeys[i]));
+			menu.add(myRadio);
+
+			myGroup.add(myRadio);
+			myRadio.setSelected(true);
+		}
+		
+//		for (int j = 0, i = 0; i<11; i++)
+//		{
+//			if (i!=0)
+//				j++;
+//			
+//			if (j % 2 == 0 && j != 0)
+//				i++;
+//			
+//			myGroup.add(menu.getItem(i));
+//		}
+		
+		menuBar.add(menu);
+		return menu;
+	}
+
+	public static JPanel getStatusArea()
+	{
+		return STATUS_AREA;
+	}
+
+	public static void showStatus(String statusString)
+	{
+		STATUS.setText(statusString);
+	}
+
+	public static String getResource(String key)
+	{
+		return (resources == null) ? null : resources.getString(key);
+	}
+
+	public static String formatMessage(String patternKey, String[] params)
+	{
+		String pattern = ApplicationSupport.getResource(patternKey);
+		MessageFormat fmt = new MessageFormat(pattern);
+		return fmt.format(params);
+	}
 }

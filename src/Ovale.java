@@ -33,13 +33,14 @@ public class Ovale extends Forme
 	 * @param rayonH
 	 * @param rayonV
 	 */
-	public Ovale(int centreX, int centreY, int rayonH, int rayonV)
+	public Ovale(int centreX, int centreY, int rayonH, int rayonV, int ori)
 	{
 		super();
 		this.centreX=centreX;
 		this.centreY=centreY;
 		this.rayonH=rayonH;
 		this.rayonV=rayonV;
+		this.original = ori;
 		
 		couleur=Color.blue;
 	}
