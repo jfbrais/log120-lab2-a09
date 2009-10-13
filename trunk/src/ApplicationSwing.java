@@ -70,6 +70,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
 
@@ -139,6 +141,15 @@ public class ApplicationSwing extends JFrame
 	private static final String MENU_FICHIER_TITRE = "app.frame.menus.file.title",
 			MENU_FICHIER_OBTENIR = "app.frame.menus.file.get",
 			MENU_FICHIER_QUITTER = "app.frame.menus.file.exit",
+			MENU_TRIER_TITRE = "app.frame.menus.sort.title",
+			MENU_TRIER_SEQUP = "app.frame.menus.sort.seqUp",
+			MENU_TRIER_SEQDOWN = "app.frame.menus.sort.seqDown",
+			MENU_TRIER_SURFUP = "app.frame.menus.sort.surfUp",
+			MENU_TRIER_SURFDOWN = "app.frame.menus.sort.surfDown",
+			MENU_TRIER_TYPEUP = "app.frame.menus.sort.typeUp",
+			MENU_TRIER_TYPEDOWN = "app.frame.menus.sort.typeDown",
+			MENU_TRIER_DIST = "app.frame.menus.sort.distance",
+			MENU_TRIER_ORI = "app.frame.menus.sort.original",
 			MENU_AIDE_TITRE = "app.frame.menus.help.title",
 			MENU_AIDE_PROPOS = "app.frame.menus.help.about";
 
@@ -178,7 +189,7 @@ public class ApplicationSwing extends JFrame
 			if (connected)
 			{
 				for (int i = 0; i < 10; i++)
-					dessinerFormes();
+					dessinerFormes(i);
 
 				try
 				{
@@ -325,11 +336,20 @@ public class ApplicationSwing extends JFrame
 	/* Créer le menu "Sort". */
 	private JMenu creerMenuSort()
 	{
-		JMenu menu = ApplicationSupport.addMenu(this, MENU_AIDE_TITRE,
+		JMenu menu = ApplicationSupport.addRadioButton(this, MENU_TRIER_TITRE,
 				new String[]
-				{ MENU_AIDE_PROPOS });
+				{ MENU_TRIER_SEQUP, MENU_TRIER_SEQDOWN, MENU_TRIER_SURFUP,
+						MENU_TRIER_SURFDOWN, MENU_TRIER_TYPEUP,
+						MENU_TRIER_TYPEDOWN, MENU_TRIER_DIST, MENU_TRIER_ORI });
 
 		menu.getItem(0).addActionListener(new AProposDeListener());
+		menu.getItem(1).addActionListener(new AProposDeListener());
+		menu.getItem(3).addActionListener(new AProposDeListener());
+		menu.getItem(4).addActionListener(new AProposDeListener());
+		menu.getItem(6).addActionListener(new AProposDeListener());
+		menu.getItem(7).addActionListener(new AProposDeListener());
+		menu.getItem(9).addActionListener(new AProposDeListener());
+		menu.getItem(10).addActionListener(new AProposDeListener());
 
 		return menu;
 	}
@@ -346,7 +366,7 @@ public class ApplicationSwing extends JFrame
 		return menu;
 	}
 
-	private void dessinerFormes()
+	private void dessinerFormes(int original)
 	{
 		String cmd = maConnection.getForme();
 		if (cmd != null)
@@ -356,7 +376,7 @@ public class ApplicationSwing extends JFrame
 			 * le paquet d'information,Ajoute la forme au stocker de forme
 			 */
 			monStocker.add(new CreateurForme().creerForme(new DecoupeChaine()
-					.decouper(cmd)));
+					.decouper(cmd), original));
 
 			repaint();
 		}

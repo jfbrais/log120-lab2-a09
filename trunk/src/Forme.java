@@ -24,6 +24,7 @@ import java.awt.Graphics;
 /* Classe abstraite */
 public abstract class Forme
 {
+	protected int original;
 	protected Color couleur;
 	private Forme previous,
 				  next;

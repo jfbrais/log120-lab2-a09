@@ -32,12 +32,13 @@ public class Cercle extends Forme
 	 * @param centreY
 	 * @param rayon
 	 */
-	public Cercle(int centreX, int centreY, int rayon)
+	public Cercle(int centreX, int centreY, int rayon, int ori)
 	{
 		super();
 		this.centreX = centreX;
 		this.centreY = centreY;
 		this.rayon = rayon;
+		this.original = ori;
 
 		couleur = Color.pink;
 	}
