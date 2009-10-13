@@ -42,6 +42,7 @@ public class FormeStocker
 		if (number>9)
 		{
 			head = head.getNext();
+			head.setPrevious(null);
 		}
 		last.setNext(newForme);
 		newForme.setPrevious(last);
