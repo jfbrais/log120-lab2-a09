@@ -120,8 +120,6 @@ public class ApplicationSwing extends JFrame
 
 	private static final int CANEVAS_LARGEUR = 500;
 
-	private static final int DELAI_ENTRE_FORMES_MSEC = 500;
-
 	private static final int DELAI_QUITTER_MSEC = 200;
 
 	private static final int DELAI_DECONNECTER_MSEC = 200;
@@ -130,39 +128,17 @@ public class ApplicationSwing extends JFrame
 
 	private static final int MARGE_V = 60;
 
-	private static final int MENU_DESSIN_ARRETER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
-
-	private static final char MENU_DESSIN_ARRETER_TOUCHE_RACC = KeyEvent.VK_A;
-
-	private static final int MENU_DESSIN_DEMARRER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
-
-	private static final char MENU_DESSIN_DEMARRER_TOUCHE_RACC = KeyEvent.VK_D;
-	
 	private static final int MENU_FICHIER_OBTENIR_TOUCHE_MASK = ActionEvent.CTRL_MASK;
-	
+
 	private static final char MENU_FICHIER_OBTENIR_TOUCHE_RACC = KeyEvent.VK_X;
 
 	private static final int MENU_FICHIER_QUITTER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
 
 	private static final char MENU_FICHIER_QUITTER_TOUCHE_RACC = KeyEvent.VK_Q;
 
-	private static final int MENU_CONNECTION_CONNECTER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
-
-	private static final char MENU_CONNECTION_CONNECTER_TOUCHE_RACC = KeyEvent.VK_C;
-
-	private static final int MENU_CONNECTION_DECONNECTER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
-
-	private static final char MENU_CONNECTION_DECONNECTER_TOUCHE_RACC = KeyEvent.VK_V;
-
 	private static final String MENU_FICHIER_TITRE = "app.frame.menus.file.title",
 			MENU_FICHIER_OBTENIR = "app.frame.menus.file.get",
 			MENU_FICHIER_QUITTER = "app.frame.menus.file.exit",
-			MENU_CONNECTION_TITRE = "app.frame.menus.connection.title",
-			MENU_CONNECTION_CONNECTER = "app.frame.menus.connection.connect",
-			MENU_CONNECTION_DECONNECTER = "app.frame.menus.connection.disconnect",
-			MENU_DESSIN_TITRE = "app.frame.menus.draw.title",
-			MENU_DESSIN_DEMARRER = "app.frame.menus.draw.start",
-			MENU_DESSIN_ARRETER = "app.frame.menus.draw.stop",
 			MENU_AIDE_TITRE = "app.frame.menus.help.title",
 			MENU_AIDE_PROPOS = "app.frame.menus.help.about";
 
@@ -172,18 +148,15 @@ public class ApplicationSwing extends JFrame
 
 	private boolean connected;
 
-	private JMenuItem arreterMenuItem, demarrerMenuItem, connectionMenuItem,
-			deconnectionMenuItem;
-
 	private Connection maConnection = new Connection();
 
 	private FormeStocker monStocker = new FormeStocker();
-	
+
 	/**
 	 * Traiter l'item "About...".
 	 * 
 	 * @author Gab
-	 *
+	 * 
 	 */
 	class AProposDeListener implements ActionListener
 	{
@@ -195,27 +168,30 @@ public class ApplicationSwing extends JFrame
 					JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-	
+
 	class GetListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
 			connected = maConnection.seConnecter();
-			
-			for (int i=0;i<10;i++)
-				dessinerFormes();
-			
-			try
-			{
-				Thread.sleep(DELAI_DECONNECTER_MSEC);
-			}
-			catch (InterruptedException e)
-			{
-				JOptionPane.showMessageDialog(null,
-						"Close connection delay interrupted");
-			}
 
-			connected = maConnection.seDeconnecter();
+			if (connected)
+			{
+				for (int i = 0; i < 10; i++)
+					dessinerFormes();
+
+				try
+				{
+					Thread.sleep(DELAI_DECONNECTER_MSEC);
+				}
+				catch (InterruptedException e)
+				{
+					JOptionPane.showMessageDialog(null,
+							"Close connection delay interrupted");
+				}
+
+				connected = maConnection.seDeconnecter();
+			}
 		}
 	}
 
@@ -223,7 +199,7 @@ public class ApplicationSwing extends JFrame
 	 * Traiter l'item "Exit".
 	 * 
 	 * @author Gab
-	 *
+	 * 
 	 */
 	class QuitterListener implements ActionListener
 	{
@@ -251,7 +227,7 @@ public class ApplicationSwing extends JFrame
 	 * Créer le panneau sur lequel les formes sont dessinées.
 	 * 
 	 * @author Gab
-	 *
+	 * 
 	 */
 	class CustomCanvas extends JPanel
 	{
@@ -287,19 +263,19 @@ public class ApplicationSwing extends JFrame
 	 * Traiter l'item "Connect".
 	 * 
 	 * @author Gab
-	 *
+	 * 
 	 */
 	class ConnecterListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
 			connected = maConnection.seConnecter();
-			//rafraichirMenus();
+			// rafraichirMenus();
 		}
 	}
 
 	/**
-	 *  Constructeur - Créer le cadre dans lequel les formes sont dessinées.
+	 * Constructeur - Créer le cadre dans lequel les formes sont dessinées.
 	 */
 	public ApplicationSwing()
 	{
@@ -337,7 +313,7 @@ public class ApplicationSwing extends JFrame
 		menu.getItem(0).setAccelerator(
 				KeyStroke.getKeyStroke(MENU_FICHIER_OBTENIR_TOUCHE_RACC,
 						MENU_FICHIER_OBTENIR_TOUCHE_MASK));
-		
+
 		menu.getItem(1).addActionListener(new QuitterListener());
 		menu.getItem(1).setAccelerator(
 				KeyStroke.getKeyStroke(MENU_FICHIER_QUITTER_TOUCHE_RACC,
@@ -345,7 +321,7 @@ public class ApplicationSwing extends JFrame
 
 		return menu;
 	}
-	
+
 	/* Créer le menu "Sort". */
 	private JMenu creerMenuSort()
 	{
@@ -369,17 +345,19 @@ public class ApplicationSwing extends JFrame
 
 		return menu;
 	}
-	
+
 	private void dessinerFormes()
 	{
 		String cmd = maConnection.getForme();
 		if (cmd != null)
 		{
-			/*Crée un paquet d'information avec la chaine,
-			 *Crée une Forme avec le paquet d'information,
-			 *Ajoute la forme au stocker de forme*/
-			monStocker.add(new CreateurForme().creerForme(new DecoupeChaine().decouper(cmd)));
-			
+			/*
+			 * Crée un paquet d'information avec la chaine,Crée une Forme avec
+			 * le paquet d'information,Ajoute la forme au stocker de forme
+			 */
+			monStocker.add(new CreateurForme().creerForme(new DecoupeChaine()
+					.decouper(cmd)));
+
 			repaint();
 		}
 		else
@@ -398,7 +376,7 @@ public class ApplicationSwing extends JFrame
 		cadre.creerMenuFichier();
 		cadre.creerMenuSort();
 		cadre.creerMenuAide();
-		//cadre.rafraichirMenus();
+		// cadre.rafraichirMenus();
 
 		/* Centrer la fenêtre. */
 		cadre.setLocationRelativeTo(null);
