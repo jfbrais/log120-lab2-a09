@@ -400,14 +400,30 @@ public class ApplicationSwing extends JFrame
 						MENU_TRIER_TYPEDOWN, MENU_TRIER_DIST, MENU_TRIER_ORI });
 
 		menu.getItem(0).addActionListener(new SeqUpListener());
+		menu.getItem(0).setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.CTRL_MASK));
 		menu.getItem(1).addActionListener(new SeqDownListener());
+		menu.getItem(1).setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_2, ActionEvent.CTRL_MASK));
 		menu.getItem(3).addActionListener(new SurfUpListener());
+		menu.getItem(3).setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_3, ActionEvent.CTRL_MASK));
 		menu.getItem(4).addActionListener(new SurfDownListener());
+		menu.getItem(4).setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_4, ActionEvent.CTRL_MASK));
 		menu.getItem(6).addActionListener(new TypeUpListener());
+		menu.getItem(6).setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_5, ActionEvent.CTRL_MASK));
 		menu.getItem(7).addActionListener(new TypeDownListener());
+		menu.getItem(7).setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_6, ActionEvent.CTRL_MASK));
 		menu.getItem(9).addActionListener(new DistanceListener());
+		menu.getItem(9).setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_7, ActionEvent.CTRL_MASK));
 		sortOriginalMenuItem = menu.getItem(10);
 		sortOriginalMenuItem.addActionListener(new OriginalListener());
+		sortOriginalMenuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_8, ActionEvent.CTRL_MASK));
 
 		return menu;
 	}
