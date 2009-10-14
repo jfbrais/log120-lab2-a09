@@ -36,6 +36,7 @@ public abstract class Forme
 	 * @param g
 	 */
 	public abstract void dessiner(Graphics g, boolean isOriginal);
+	public abstract void setNewPoint(int emplacement);
 
 	/**
 	 * @param previous

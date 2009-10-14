@@ -60,4 +60,10 @@ public class Cercle extends Forme
 		else
 			g.fillOval(centreX - rayon, centreY - rayon, 2 * rayon, 2 * rayon);
 	}
+	
+	public void setNewPoint(int emplacement)
+	{
+		centreX = emplacement + rayon;
+		centreY = emplacement + rayon;
+	}
 }

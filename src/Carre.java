@@ -63,4 +63,12 @@ public class Carre extends Forme
 		else
 			g.fillRect(x1, y1, x2 - x1, y2 - y1);
 	}
+	
+	public void setNewPoint(int emplacement)
+	{
+		x2 = x2-(x1-emplacement);
+		y2 = y2-(y1-emplacement);
+		x1 = emplacement;
+		y1 = emplacement;
+	}
 }

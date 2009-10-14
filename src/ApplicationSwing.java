@@ -249,7 +249,7 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			monStocker.sortSeqDown();
+			monStocker.sort(new ComparateurNSeqDown());
 			repaint();
 		}
 	}
@@ -258,6 +258,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
+//			monStocker.sort(new ComparateurNSeqDown());
+//			repaint();
 		}
 	}
 	
@@ -265,6 +267,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
+//			monStocker.sort(new ComparateurNSeqDown());
+//			repaint();
 		}
 	}
 	
@@ -272,6 +276,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
+//			monStocker.sort(new ComparateurNSeqDown());
+//			repaint();
 		}
 	}
 	
@@ -279,6 +285,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
+//			monStocker.sort(new ComparateurNSeqDown());
+//			repaint();
 		}
 	}
 	
@@ -286,6 +294,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
+//			monStocker.sort(new ComparateurNSeqDown());
+//			repaint();
 		}
 	}
 	
