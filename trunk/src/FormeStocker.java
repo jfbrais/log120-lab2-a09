@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 /******************************************************
  * Cours : LOG120 Session : Saison automne 2009 Groupe : 03 Projet : Laboratoire
  * #1 Étudiant(e)(s) : Gabriel Desmarais Code(s) perm. : DESG24078908 Professeur
@@ -68,7 +70,7 @@ public class FormeStocker
 		for (int i = 0; i < 10; i++)
 		{
 			current = head;
-			prev = head;
+			prev = null;
 			next = current.getNext();
 			for (int j = 0; j < 10; j++)
 			{
@@ -81,9 +83,9 @@ public class FormeStocker
 						current.setPrevious(next);
 						next.setPrevious(null);
 						current.setNext(next.getNext());
+						next.getNext().setPrevious(current);
 						next.setNext(current);
-						current = head;
-						prev = head;
+						prev = next;
 						next = current.getNext();
 					}
 					else
@@ -93,8 +95,9 @@ public class FormeStocker
 							prev.setNext(next);
 							next.setPrevious(prev);
 							next.setNext(current);
+							current.getPrevious().setNext(next);
 							current.setPrevious(next);
-							current.setNext(next.getNext());
+							current.setNext(null);
 
 							prev = next;
 							next = current.getNext();
@@ -130,6 +133,75 @@ public class FormeStocker
 		}
 	}
 	
+	public void sort(Comparator<Forme> comparateur)
+	{
+		Forme current, prev, next;
+		for (int i = 0; i < 10; i++)
+		{
+			current = head;
+			prev = null;
+			next = current.getNext();
+			for (int j = 0; j < 10; j++)
+			{
+				if (next != null)
+				if (comparateur.compare(current, next)==1)
+				{
+					if (current == head)
+					{
+						head = next;
+						current.setPrevious(next);
+						next.setPrevious(null);
+						current.setNext(next.getNext());
+						next.getNext().setPrevious(current);
+						next.setNext(current);
+						prev = next;
+						next = current.getNext();
+					}
+					else
+					{
+						if (next.getNext() == null)
+						{
+							prev.setNext(next);
+							next.setPrevious(prev);
+							next.setNext(current);
+							current.getPrevious().setNext(next);
+							current.setPrevious(next);
+							current.setNext(null);
+
+							prev = next;
+							next = current.getNext();
+						}
+						else
+						{
+							prev.setNext(next);
+							current.setNext(next.getNext());
+							next.setPrevious(prev);
+							next.getNext().setPrevious(current);
+							next.setNext(current);
+							current.setPrevious(next);
+
+							prev = next;
+							next = current.getNext();
+						}
+					}
+				}
+				else
+				{
+					prev = current;
+					current = next;
+					next = current.getNext();
+				}
+			}
+		}
+		
+		Forme node = head;
+		for (int i = 0; i < 10; i++)
+		{
+			System.out.println(node.getNseq());
+			node = node.getNext();
+		}
+	}
+	
 	public void sortSeqDown()
 	{
 		Forme node = head;
@@ -144,7 +216,7 @@ public class FormeStocker
 		for (int i = 0; i < 10; i++)
 		{
 			current = head;
-			prev = head;
+			prev = null;
 			next = current.getNext();
 			for (int j = 0; j < 10; j++)
 			{
@@ -159,8 +231,7 @@ public class FormeStocker
 						current.setNext(next.getNext());
 						next.getNext().setPrevious(current);
 						next.setNext(current);
-						current = head.getNext();
-						prev = head;
+						prev = next;
 						next = current.getNext();
 					}
 					else
@@ -170,25 +241,24 @@ public class FormeStocker
 							prev.setNext(next);
 							next.setPrevious(prev);
 							next.setNext(current);
+							current.getPrevious().setNext(next);
 							current.setPrevious(next);
-							current.setNext(next.getNext());
+							current.setNext(null);
 
-							prev = next.getPrevious();
-							current = next;
-							next = current;
+							prev = next;
+							next = current.getNext();
 						}
 						else
 						{
-							next.getNext().setPrevious(current);
 							prev.setNext(next);
 							current.setNext(next.getNext());
 							next.setPrevious(prev);
+							next.getNext().setPrevious(current);
 							next.setNext(current);
 							current.setPrevious(next);
 
-							prev = current;
-							current = next;
-							next = next.getNext();
+							prev = next;
+							next = current.getNext();
 						}
 					}
 				}

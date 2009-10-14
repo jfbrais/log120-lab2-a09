@@ -240,7 +240,7 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			monStocker.sortSeqUp();
+			monStocker.sort(new ComparateurNSeqUp());
 			repaint();
 		}
 	}
