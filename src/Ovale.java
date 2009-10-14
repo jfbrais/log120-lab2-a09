@@ -23,8 +23,8 @@ import java.awt.Graphics;
 
 public class Ovale extends Forme
 {
-	private int centreX,centreY,rayonH,rayonV;
-	
+	private int centreX, centreY, rayonH, rayonV, centreXori, centreYori;
+
 	/**
 	 * Constructeur personnalisé
 	 * 
@@ -33,26 +33,34 @@ public class Ovale extends Forme
 	 * @param rayonH
 	 * @param rayonV
 	 */
-	public Ovale(int centreX, int centreY, int rayonH, int rayonV, int ori)
+	public Ovale(int centreX, int centreY, int rayonH, int rayonV, int ori, int nseq)
 	{
 		super();
-		this.centreX=centreX;
-		this.centreY=centreY;
-		this.rayonH=rayonH;
-		this.rayonV=rayonV;
+		this.centreX = centreX;
+		this.centreXori = centreX;
+		this.centreY = centreY;
+		this.centreYori = centreY;
+		this.rayonH = rayonH;
+		this.rayonV = rayonV;
 		this.original = ori;
-		
-		couleur=Color.blue;
+		this.nseq = nseq;
+
+		couleur = Color.blue;
 	}
-	
+
 	/**
 	 * Redéfinition de la méthode abstraite
 	 * 
 	 * @see Forme#dessiner(java.awt.Graphics)
 	 */
-	public void dessiner(Graphics g)
+	public void dessiner(Graphics g, boolean isOriginal)
 	{
 		g.setColor(couleur);
-		g.fillOval(centreX-rayonV, centreY-rayonH, rayonH*2, rayonV*2);
+		if (isOriginal)
+			g.fillOval(centreXori - rayonV, centreYori - rayonH, rayonH * 2,
+					rayonV * 2);
+		else
+			g.fillOval(centreX - rayonV, centreY - rayonH, rayonH * 2,
+					rayonV * 2);
 	}
 }

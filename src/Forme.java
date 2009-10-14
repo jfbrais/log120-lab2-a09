@@ -28,13 +28,14 @@ public abstract class Forme
 	protected Color couleur;
 	private Forme previous,
 				  next;
+	protected int nseq;
 
 	/**
 	 * Méthode abstraite à reféfinir dans les autres classes héritant de Forme
 	 * 
 	 * @param g
 	 */
-	public abstract void dessiner(Graphics g);
+	public abstract void dessiner(Graphics g, boolean isOriginal);
 
 	/**
 	 * @param previous
@@ -66,5 +67,15 @@ public abstract class Forme
 	public Forme getNext()
 	{
 		return next;
+	}
+
+	public void setNseq(int nseq)
+	{
+		this.nseq = nseq;
+	}
+
+	public int getNseq()
+	{
+		return nseq;
 	}
 }

@@ -27,7 +27,7 @@ public class CreateurForme
 		if (paquet.getType().equals("CERCLE"))
 		{
 			nouvelleCreation = new Cercle(paquet.getParams(0), paquet
-					.getParams(1), paquet.getParams(2), original);
+					.getParams(1), paquet.getParams(2), original, paquet.getNseq());
 		}
 
 		/* Détermine si c'est un Carre */
@@ -35,7 +35,7 @@ public class CreateurForme
 		{
 			nouvelleCreation = new Carre(paquet.getParams(0), paquet
 					.getParams(1), paquet.getParams(2), paquet.getParams(3),
-					original);
+					original, paquet.getNseq());
 		}
 
 		/* Détermine si c'est un Rectangle */
@@ -43,7 +43,7 @@ public class CreateurForme
 		{
 			nouvelleCreation = new Rectangle(paquet.getParams(0), paquet
 					.getParams(1), paquet.getParams(2), paquet.getParams(3),
-					original);
+					original, paquet.getNseq());
 		}
 
 		/* Détermine si c'est un Ovale */
@@ -51,7 +51,7 @@ public class CreateurForme
 		{
 			nouvelleCreation = new Ovale(paquet.getParams(0), paquet
 					.getParams(1), paquet.getParams(2), paquet.getParams(3),
-					original);
+					original, paquet.getNseq());
 		}
 
 		/* Détermine si c'est un Ligne */
@@ -59,11 +59,9 @@ public class CreateurForme
 		{
 			nouvelleCreation = new Ligne(paquet.getParams(0), paquet
 					.getParams(1), paquet.getParams(2), paquet.getParams(3),
-					original);
+					original, paquet.getNseq());
 		}
 		
-		System.out.println(original);
-
 		return nouvelleCreation;
 	}
 }

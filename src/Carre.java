@@ -18,16 +18,14 @@
  2009-09-29 : Status Initial
  *******************************************************/
 
-
 import java.awt.Color;
 import java.awt.Graphics;
 
-
 public class Carre extends Forme
 {
-	private int x1,y1,x2,y2;
-	
-	/** 
+	private int x1, y1, x2, y2, x1ori, y1ori, x2ori, y2ori;
+
+	/**
 	 * Constructeur personnalisé
 	 * 
 	 * @param x1
@@ -35,26 +33,34 @@ public class Carre extends Forme
 	 * @param x2
 	 * @param y2
 	 */
-	public Carre(int x1, int y1, int x2, int y2, int ori)
+	public Carre(int x1, int y1, int x2, int y2, int ori, int nseq)
 	{
 		super();
-		this.x1=x1;
-		this.y1=y1;
-		this.x2=x2;
-		this.y2=y2;
+		this.x1 = x1;
+		this.x1ori = x1;
+		this.y1 = y1;
+		this.y1ori = y1;
+		this.x2 = x2;
+		this.x2ori = x2;
+		this.y2 = y2;
+		this.y2ori = y2;
 		this.original = ori;
-		
-		couleur=Color.red;
+		this.nseq = nseq;
+
+		couleur = Color.red;
 	}
-	
-	/** 
+
+	/**
 	 * Redéfinition de la méthode abstraite
 	 * 
 	 * @see Forme#dessiner(java.awt.Graphics)
 	 */
-	public void dessiner(Graphics g)
+	public void dessiner(Graphics g, boolean isOriginal)
 	{
 		g.setColor(couleur);
-		g.fillRect(x1, y1, x2-x1, y2-y1);
+		if (isOriginal)
+			g.fillRect(x1ori, y1ori, x2ori - x1ori, y2ori - y1ori);
+		else
+			g.fillRect(x1, y1, x2 - x1, y2 - y1);
 	}
 }
