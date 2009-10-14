@@ -42,7 +42,7 @@ public class Ovale extends Forme
 		this.centreYori = centreY;
 		this.rayonH = rayonH;
 		this.rayonV = rayonV;
-		this.original = ori;
+		this.setOriginal(ori);
 		this.nseq = nseq;
 
 		couleur = Color.blue;
@@ -68,5 +68,16 @@ public class Ovale extends Forme
 	{
 		centreX = emplacement + rayonV;
 		centreY = emplacement + rayonH;
+	}
+	
+	public void setOriginalPoint()
+	{
+		centreX = centreXori;
+		centreY = centreYori;
+	}
+	
+	public double getAire()
+	{
+		return Math.PI*rayonV*rayonH;
 	}
 }

@@ -44,7 +44,7 @@ public class Carre extends Forme
 		this.x2ori = x2;
 		this.y2 = y2;
 		this.y2ori = y2;
-		this.original = ori;
+		this.setOriginal(ori);
 		this.nseq = nseq;
 
 		couleur = Color.red;
@@ -70,5 +70,18 @@ public class Carre extends Forme
 		y2 = y2-(y1-emplacement);
 		x1 = emplacement;
 		y1 = emplacement;
+	}
+	
+	public void setOriginalPoint()
+	{
+		x1 = x1ori;
+		y1 = y1ori;
+		x2 = x2ori;
+		y2 = y2ori;
+	}
+	
+	public double getAire()
+	{
+		return ((x2-x1)*(y2-y1));
 	}
 }

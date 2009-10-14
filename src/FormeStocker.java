@@ -132,4 +132,14 @@ public class FormeStocker
 			node = node.getNext();
 		}
 	}
+	
+	public void setOriginalEmplacement()
+	{
+		Forme node = head;
+		for (int i = 0; i < 10; i++)
+		{
+			node.setOriginalPoint();
+			node = node.getNext();
+		}
+	}
 }
