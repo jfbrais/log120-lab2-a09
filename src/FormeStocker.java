@@ -57,20 +57,22 @@ public class FormeStocker
 	public void sortSeqUp()
 	{
 		Forme node = head;
-		for (int i=0;i<10;i++)
+		for (int i = 0; i < 10; i++)
 		{
 			System.out.println(node.getNseq());
 			node = node.getNext();
 		}
 		System.out.println();
-		System.out.println();
-		System.out.println();
-		
-		Forme current = head, prev = head, next = current.getNext();
+
+		Forme current, prev, next;
 		for (int i = 0; i < 10; i++)
 		{
+			current = head;
+			prev = head;
+			next = current.getNext();
 			for (int j = 0; j < 10; j++)
 			{
+				if (next != null)
 				if (current.getNseq() > next.getNseq())
 				{
 					if (current == head)
@@ -93,29 +95,35 @@ public class FormeStocker
 							next.setNext(current);
 							current.setPrevious(next);
 							current.setNext(next.getNext());
-							
+
 							prev = next;
 							next = current.getNext();
 						}
 						else
 						{
 							prev.setNext(next);
+							current.setNext(next.getNext());
 							next.setPrevious(prev);
 							next.getNext().setPrevious(current);
 							next.setNext(current);
 							current.setPrevious(next);
-							current.setNext(next.getNext());
-							
+
 							prev = next;
 							next = current.getNext();
 						}
 					}
-				}				
+				}
+				else
+				{
+					prev = current;
+					current = next;
+					next = current.getNext();
+				}
 			}
 		}
 
 		node = head;
-		for (int i=0;i<10;i++)
+		for (int i = 0; i < 10; i++)
 		{
 			System.out.println(node.getNseq());
 			node = node.getNext();
