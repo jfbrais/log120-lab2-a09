@@ -258,8 +258,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-//			monStocker.sort(new ComparateurNSeqDown());
-//			repaint();
+			monStocker.sort(new ComparateurSurfUp());
+			repaint();
 		}
 	}
 	
@@ -267,8 +267,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-//			monStocker.sort(new ComparateurNSeqDown());
-//			repaint();
+			monStocker.sort(new ComparateurSurfDown());
+			repaint();
 		}
 	}
 	
@@ -303,6 +303,9 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
+			monStocker.sort(new ComparateurOriginal());
+			monStocker.setOriginalEmplacement();
+			repaint();
 		}
 	}
 

@@ -37,6 +37,8 @@ public abstract class Forme
 	 */
 	public abstract void dessiner(Graphics g, boolean isOriginal);
 	public abstract void setNewPoint(int emplacement);
+	public abstract void setOriginalPoint();
+	public abstract double getAire();
 
 	/**
 	 * @param previous
@@ -78,5 +80,13 @@ public abstract class Forme
 	public int getNseq()
 	{
 		return nseq;
+	}
+	public void setOriginal(int original)
+	{
+		this.original = original;
+	}
+	public int getOriginal()
+	{
+		return original;
 	}
 }

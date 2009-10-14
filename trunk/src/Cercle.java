@@ -20,6 +20,7 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.math.*;
 
 public class Cercle extends Forme
 {
@@ -40,7 +41,7 @@ public class Cercle extends Forme
 		this.centreY = centreY;
 		this.centreYori = centreY;
 		this.rayon = rayon;
-		this.original = ori;
+		this.setOriginal(ori);
 		this.nseq = nseq;
 
 		couleur = Color.pink;
@@ -65,5 +66,16 @@ public class Cercle extends Forme
 	{
 		centreX = emplacement + rayon;
 		centreY = emplacement + rayon;
+	}
+	
+	public void setOriginalPoint()
+	{
+		centreX = centreXori;
+		centreY = centreYori;
+	}
+	
+	public double getAire()
+	{
+		return Math.PI*rayon*rayon;
 	}
 }
