@@ -129,4 +129,83 @@ public class FormeStocker
 			node = node.getNext();
 		}
 	}
+	
+	public void sortSeqDown()
+	{
+		Forme node = head;
+		for (int i = 0; i < 10; i++)
+		{
+			System.out.println(node.getNseq());
+			node = node.getNext();
+		}
+		System.out.println();
+
+		Forme current, prev, next;
+		for (int i = 0; i < 10; i++)
+		{
+			current = head;
+			prev = head;
+			next = current.getNext();
+			for (int j = 0; j < 10; j++)
+			{
+				if (next != null)
+				if (current.getNseq() < next.getNseq())
+				{
+					if (current == head)
+					{
+						head = next;
+						current.setPrevious(next);
+						next.setPrevious(null);
+						current.setNext(next.getNext());
+						next.getNext().setPrevious(current);
+						next.setNext(current);
+						current = head.getNext();
+						prev = head;
+						next = current.getNext();
+					}
+					else
+					{
+						if (next.getNext() == null)
+						{
+							prev.setNext(next);
+							next.setPrevious(prev);
+							next.setNext(current);
+							current.setPrevious(next);
+							current.setNext(next.getNext());
+
+							prev = next.getPrevious();
+							current = next;
+							next = current;
+						}
+						else
+						{
+							next.getNext().setPrevious(current);
+							prev.setNext(next);
+							current.setNext(next.getNext());
+							next.setPrevious(prev);
+							next.setNext(current);
+							current.setPrevious(next);
+
+							prev = current;
+							current = next;
+							next = next.getNext();
+						}
+					}
+				}
+				else
+				{
+					prev = current;
+					current = next;
+					next = current.getNext();
+				}
+			}
+		}
+
+		node = head;
+		for (int i = 0; i < 10; i++)
+		{
+			System.out.println(node.getNseq());
+			node = node.getNext();
+		}
+	}
 }
