@@ -154,6 +154,8 @@ public class ApplicationSwing extends JFrame
 			MENU_AIDE_PROPOS = "app.frame.menus.help.about";
 
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
+	
+	private JMenuItem sortOriginalMenuItem;
 
 	private static final long serialVersionUID = 1L;
 
@@ -201,7 +203,7 @@ public class ApplicationSwing extends JFrame
 							"Close connection delay interrupted");
 				}
 
-				connected = maConnection.seDeconnecter();
+				//connected = maConnection.seDeconnecter();
 			}
 		}
 	}
@@ -231,6 +233,64 @@ public class ApplicationSwing extends JFrame
 			}
 
 			System.exit(0);
+		}
+	}
+	
+	class SeqUpListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			monStocker.sortSeqUp();
+			repaint();
+		}
+	}
+	
+	class SeqDownListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+		}
+	}
+	
+	class SurfUpListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+		}
+	}
+	
+	class SurfDownListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+		}
+	}
+	
+	class TypeUpListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+		}
+	}
+	
+	class TypeDownListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+		}
+	}
+	
+	class DistanceListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+		}
+	}
+	
+	class OriginalListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
 		}
 	}
 
@@ -264,24 +324,9 @@ public class ApplicationSwing extends JFrame
 			{
 				if (monStocker.getForme(i) != null)
 				{
-					monStocker.getForme(i).dessiner(g);
+					monStocker.getForme(i).dessiner(g, sortOriginalMenuItem.isSelected());
 				}
 			}
-		}
-	}
-
-	/**
-	 * Traiter l'item "Connect".
-	 * 
-	 * @author Gab
-	 * 
-	 */
-	class ConnecterListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent arg0)
-		{
-			connected = maConnection.seConnecter();
-			// rafraichirMenus();
 		}
 	}
 
@@ -342,14 +387,15 @@ public class ApplicationSwing extends JFrame
 						MENU_TRIER_SURFDOWN, MENU_TRIER_TYPEUP,
 						MENU_TRIER_TYPEDOWN, MENU_TRIER_DIST, MENU_TRIER_ORI });
 
-		menu.getItem(0).addActionListener(new AProposDeListener());
-		menu.getItem(1).addActionListener(new AProposDeListener());
-		menu.getItem(3).addActionListener(new AProposDeListener());
-		menu.getItem(4).addActionListener(new AProposDeListener());
-		menu.getItem(6).addActionListener(new AProposDeListener());
-		menu.getItem(7).addActionListener(new AProposDeListener());
-		menu.getItem(9).addActionListener(new AProposDeListener());
-		menu.getItem(10).addActionListener(new AProposDeListener());
+		menu.getItem(0).addActionListener(new SeqUpListener());
+		menu.getItem(1).addActionListener(new SeqDownListener());
+		menu.getItem(3).addActionListener(new SurfUpListener());
+		menu.getItem(4).addActionListener(new SurfDownListener());
+		menu.getItem(6).addActionListener(new TypeUpListener());
+		menu.getItem(7).addActionListener(new TypeDownListener());
+		menu.getItem(9).addActionListener(new DistanceListener());
+		sortOriginalMenuItem = menu.getItem(10);
+		sortOriginalMenuItem.addActionListener(new OriginalListener());
 
 		return menu;
 	}

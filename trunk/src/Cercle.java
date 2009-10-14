@@ -23,7 +23,7 @@ import java.awt.Graphics;
 
 public class Cercle extends Forme
 {
-	private int centreX, centreY, rayon;
+	private int centreX, centreY, rayon, centreXori, centreYori;
 
 	/**
 	 * Constructeur personnalisé
@@ -32,13 +32,16 @@ public class Cercle extends Forme
 	 * @param centreY
 	 * @param rayon
 	 */
-	public Cercle(int centreX, int centreY, int rayon, int ori)
+	public Cercle(int centreX, int centreY, int rayon, int ori, int nseq)
 	{
 		super();
 		this.centreX = centreX;
+		this.centreXori = centreX;
 		this.centreY = centreY;
+		this.centreYori = centreY;
 		this.rayon = rayon;
 		this.original = ori;
+		this.nseq = nseq;
 
 		couleur = Color.pink;
 	}
@@ -48,9 +51,13 @@ public class Cercle extends Forme
 	 * 
 	 * @see Forme#dessiner(java.awt.Graphics)
 	 */
-	public void dessiner(Graphics g)
+	public void dessiner(Graphics g, boolean isOriginal)
 	{
 		g.setColor(couleur);
-		g.fillOval(centreX - rayon, centreY - rayon, 2 * rayon, 2 * rayon);
+		if (isOriginal)
+			g.fillOval(centreXori - rayon, centreYori - rayon, 2 * rayon,
+					2 * rayon);
+		else
+			g.fillOval(centreX - rayon, centreY - rayon, 2 * rayon, 2 * rayon);
 	}
 }
