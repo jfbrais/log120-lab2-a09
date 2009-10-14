@@ -56,83 +56,6 @@ public class FormeStocker
 		return node;
 	}
 
-	public void sortSeqUp()
-	{
-		Forme node = head;
-		for (int i = 0; i < 10; i++)
-		{
-			System.out.println(node.getNseq());
-			node = node.getNext();
-		}
-		System.out.println();
-
-		Forme current, prev, next;
-		for (int i = 0; i < 10; i++)
-		{
-			current = head;
-			prev = null;
-			next = current.getNext();
-			for (int j = 0; j < 10; j++)
-			{
-				if (next != null)
-				if (current.getNseq() > next.getNseq())
-				{
-					if (current == head)
-					{
-						head = next;
-						current.setPrevious(next);
-						next.setPrevious(null);
-						current.setNext(next.getNext());
-						next.getNext().setPrevious(current);
-						next.setNext(current);
-						prev = next;
-						next = current.getNext();
-					}
-					else
-					{
-						if (next.getNext() == null)
-						{
-							prev.setNext(next);
-							next.setPrevious(prev);
-							next.setNext(current);
-							current.getPrevious().setNext(next);
-							current.setPrevious(next);
-							current.setNext(null);
-
-							prev = next;
-							next = current.getNext();
-						}
-						else
-						{
-							prev.setNext(next);
-							current.setNext(next.getNext());
-							next.setPrevious(prev);
-							next.getNext().setPrevious(current);
-							next.setNext(current);
-							current.setPrevious(next);
-
-							prev = next;
-							next = current.getNext();
-						}
-					}
-				}
-				else
-				{
-					prev = current;
-					current = next;
-					next = current.getNext();
-				}
-			}
-		}
-
-		node = head;
-		for (int i = 0; i < 10; i++)
-		{
-			System.out.println(node.getNseq());
-			node = node.getNext();
-		}
-	}
-	
 	public void sort(Comparator<Forme> comparateur)
 	{
 		Forme current, prev, next;
@@ -197,80 +120,11 @@ public class FormeStocker
 		Forme node = head;
 		for (int i = 0; i < 10; i++)
 		{
-			System.out.println(node.getNseq());
+			node.setNewPoint(i*40);
 			node = node.getNext();
 		}
-	}
-	
-	public void sortSeqDown()
-	{
-		Forme node = head;
-		for (int i = 0; i < 10; i++)
-		{
-			System.out.println(node.getNseq());
-			node = node.getNext();
-		}
-		System.out.println();
-
-		Forme current, prev, next;
-		for (int i = 0; i < 10; i++)
-		{
-			current = head;
-			prev = null;
-			next = current.getNext();
-			for (int j = 0; j < 10; j++)
-			{
-				if (next != null)
-				if (current.getNseq() < next.getNseq())
-				{
-					if (current == head)
-					{
-						head = next;
-						current.setPrevious(next);
-						next.setPrevious(null);
-						current.setNext(next.getNext());
-						next.getNext().setPrevious(current);
-						next.setNext(current);
-						prev = next;
-						next = current.getNext();
-					}
-					else
-					{
-						if (next.getNext() == null)
-						{
-							prev.setNext(next);
-							next.setPrevious(prev);
-							next.setNext(current);
-							current.getPrevious().setNext(next);
-							current.setPrevious(next);
-							current.setNext(null);
-
-							prev = next;
-							next = current.getNext();
-						}
-						else
-						{
-							prev.setNext(next);
-							current.setNext(next.getNext());
-							next.setPrevious(prev);
-							next.getNext().setPrevious(current);
-							next.setNext(current);
-							current.setPrevious(next);
-
-							prev = next;
-							next = current.getNext();
-						}
-					}
-				}
-				else
-				{
-					prev = current;
-					current = next;
-					next = current.getNext();
-				}
-			}
-		}
-
+		
+		
 		node = head;
 		for (int i = 0; i < 10; i++)
 		{

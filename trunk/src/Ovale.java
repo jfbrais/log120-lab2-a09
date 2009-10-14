@@ -63,4 +63,10 @@ public class Ovale extends Forme
 			g.fillOval(centreX - rayonV, centreY - rayonH, rayonH * 2,
 					rayonV * 2);
 	}
+	
+	public void setNewPoint(int emplacement)
+	{
+		centreX = emplacement + rayonV;
+		centreY = emplacement + rayonH;
+	}
 }
