@@ -249,6 +249,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
+			monStocker.sortSeqDown();
+			repaint();
 		}
 	}
 	
