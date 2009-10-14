@@ -203,7 +203,7 @@ public class ApplicationSwing extends JFrame
 							"Close connection delay interrupted");
 				}
 
-				//connected = maConnection.seDeconnecter();
+				connected = maConnection.seDeconnecter();
 			}
 		}
 	}
