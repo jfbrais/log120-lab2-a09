@@ -83,15 +83,16 @@ public class Ovale extends Forme
 
 	public int getWidth()
 	{
-		return (this.rayonH * 2);
+		return (rayonH*2);
 	}
 
 	public int getHeight()
 	{
-		return (this.rayonV * 2);
+		return (rayonV*2);
 	}
 
 	public double getDistance()
 	{
+		return (rayonH > rayonV) ? rayonH*2 : rayonV*2 ;
 	}
 }
