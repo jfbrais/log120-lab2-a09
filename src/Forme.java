@@ -39,6 +39,9 @@ public abstract class Forme
 	public abstract void setNewPoint(int emplacement);
 	public abstract void setOriginalPoint();
 	public abstract double getAire();
+	public abstract int getWidth();
+	public abstract int getHeight();
+	public abstract double getDistance();
 
 	/**
 	 * @param previous
