@@ -7,7 +7,7 @@ import java.util.Comparator;
 public class ComparateurSurfDown implements Comparator<Forme>
 {
 	/**
-	 * Retourne s'il doit interchanger les objets ou non
+	 * Retourne l'entier 1 s'il doit interchanger les objets ou non, -1 s'il ne doit pas.
 	 * 
 	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
 	 */
