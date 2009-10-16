@@ -6,7 +6,7 @@ public class ComparateurLargeurDown implements Comparator<Forme>
 	public int compare(Forme forme1, Forme forme2)
 	{
 		int value = -1;
-		if (forme1.getNseq()<forme2.getNseq())
+		if (forme1.getWidth() < forme2.getWidth())
 		{
 			value = 1;
 		}
