@@ -33,7 +33,8 @@ public class Ovale extends Forme
 	 * @param rayonH
 	 * @param rayonV
 	 */
-	public Ovale(int centreX, int centreY, int rayonH, int rayonV, int ori, int nseq)
+	public Ovale(int centreX, int centreY, int rayonH, int rayonV, int ori,
+			int nseq)
 	{
 		super();
 		this.centreX = centreX;
@@ -63,36 +64,35 @@ public class Ovale extends Forme
 			g.fillOval(centreX - rayonV, centreY - rayonH, rayonH * 2,
 					rayonV * 2);
 	}
-	
+
 	public void setNewPoint(int emplacement)
 	{
 		centreX = emplacement + rayonV;
 		centreY = emplacement + rayonH;
 	}
-	
+
 	public void setOriginalPoint()
 	{
 		centreX = centreXori;
 		centreY = centreYori;
 	}
-	
+
 	public double getAire()
 	{
-		return Math.PI*rayonV*rayonH;
+		return Math.PI * rayonV * rayonH;
 	}
-	
+
 	public int getWidth()
 	{
 		return (this.rayonH * 2);
 	}
-	
-	public int getHeigth()
+
+	public int getHeight()
 	{
-		
+		return (this.rayonV * 2);
 	}
-	
+
 	public double getDistance()
 	{
-		
 	}
 }
