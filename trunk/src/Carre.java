@@ -84,4 +84,18 @@ public class Carre extends Forme
 	{
 		return ((x2-x1)*(y2-y1));
 	}
+	
+	public int getWidth()
+	{
+		return (x2-x1);
+	}
+	
+	public int getHeight()
+	{
+		return (y2-y1);
+	}
+	
+	public double getDistance()
+	{
+	}
 }
