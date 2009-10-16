@@ -279,7 +279,7 @@ public class ApplicationSwing extends JFrame
 		public void actionPerformed(ActionEvent arg0)
 		{
 			// monStocker.sort(new ComparateurNSeqDown());
-			 repaint();
+			repaint();
 		}
 	}
 
@@ -288,7 +288,7 @@ public class ApplicationSwing extends JFrame
 		public void actionPerformed(ActionEvent arg0)
 		{
 			// monStocker.sort(new ComparateurNSeqDown());
-			 repaint();
+			repaint();
 		}
 	}
 
@@ -296,8 +296,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			// monStocker.sort(new ComparateurNSeqDown());
-			 repaint();
+			monStocker.sort(new ComparateurLargeurUp());
+			repaint();
 		}
 	}
 
@@ -305,8 +305,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			// monStocker.sort(new ComparateurNSeqDown());
-			 repaint();
+			monStocker.sort(new ComparateurLargeurDown());
+			repaint();
 		}
 	}
 
@@ -314,8 +314,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			// monStocker.sort(new ComparateurNSeqDown());
-			 repaint();
+			monStocker.sort(new ComparateurHauteurUp());
+			repaint();
 		}
 	}
 
@@ -323,8 +323,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			// monStocker.sort(new ComparateurNSeqDown());
-			 repaint();
+			monStocker.sort(new ComparateurHauteurDown());
+			repaint();
 		}
 	}
 
@@ -332,8 +332,8 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			 monStocker.sort(new ComparateurDistance());
-			 repaint();
+			monStocker.sort(new ComparateurDistance());
+			repaint();
 		}
 	}
 
