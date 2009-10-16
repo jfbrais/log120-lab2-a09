@@ -146,13 +146,17 @@ public class ApplicationSwing extends JFrame
 			MENU_TRIER_SURFDOWN = "app.frame.menus.sort.surfDown",
 			MENU_TRIER_TYPEUP = "app.frame.menus.sort.typeUp",
 			MENU_TRIER_TYPEDOWN = "app.frame.menus.sort.typeDown",
+			MENU_TRIER_WIDTHUP = "app.frame.menus.sort.widthUp",
+			MENU_TRIER_WIDTHDOWN = "app.frame.menus.sort.widthDown",
+			MENU_TRIER_HEIGHTUP = "app.frame.menus.sort.heightUp",
+			MENU_TRIER_HEIGHTDOWN = "app.frame.menus.sort.heightDown",
 			MENU_TRIER_DIST = "app.frame.menus.sort.distance",
 			MENU_TRIER_ORI = "app.frame.menus.sort.original",
 			MENU_AIDE_TITRE = "app.frame.menus.help.title",
 			MENU_AIDE_PROPOS = "app.frame.menus.help.about";
 
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
-	
+
 	private JMenuItem sortOriginalMenuItem;
 
 	private static final long serialVersionUID = 1L;
@@ -233,7 +237,7 @@ public class ApplicationSwing extends JFrame
 			System.exit(0);
 		}
 	}
-	
+
 	class SeqUpListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -242,7 +246,7 @@ public class ApplicationSwing extends JFrame
 			repaint();
 		}
 	}
-	
+
 	class SeqDownListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -251,7 +255,7 @@ public class ApplicationSwing extends JFrame
 			repaint();
 		}
 	}
-	
+
 	class SurfUpListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -260,7 +264,7 @@ public class ApplicationSwing extends JFrame
 			repaint();
 		}
 	}
-	
+
 	class SurfDownListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -269,34 +273,70 @@ public class ApplicationSwing extends JFrame
 			repaint();
 		}
 	}
-	
+
 	class TypeUpListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-//			monStocker.sort(new ComparateurNSeqDown());
-//			repaint();
+			// monStocker.sort(new ComparateurNSeqDown());
+			 repaint();
 		}
 	}
-	
+
 	class TypeDownListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-//			monStocker.sort(new ComparateurNSeqDown());
-//			repaint();
+			// monStocker.sort(new ComparateurNSeqDown());
+			 repaint();
 		}
 	}
-	
+
+	class WidthUpListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			// monStocker.sort(new ComparateurNSeqDown());
+			 repaint();
+		}
+	}
+
+	class WidthDownListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			// monStocker.sort(new ComparateurNSeqDown());
+			 repaint();
+		}
+	}
+
+	class HeightUpListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			// monStocker.sort(new ComparateurNSeqDown());
+			 repaint();
+		}
+	}
+
+	class HeightDownListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			// monStocker.sort(new ComparateurNSeqDown());
+			 repaint();
+		}
+	}
+
 	class DistanceListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-//			monStocker.sort(new ComparateurNSeqDown());
-//			repaint();
+			// monStocker.sort(new ComparateurNSeqDown());
+			 repaint();
 		}
 	}
-	
+
 	class OriginalListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -337,7 +377,8 @@ public class ApplicationSwing extends JFrame
 			{
 				if (monStocker.getForme(i) != null)
 				{
-					monStocker.getForme(i).dessiner(g, sortOriginalMenuItem.isSelected());
+					monStocker.getForme(i).dessiner(g,
+							sortOriginalMenuItem.isSelected());
 				}
 			}
 		}
@@ -394,11 +435,15 @@ public class ApplicationSwing extends JFrame
 	/* Créer le menu "Sort". */
 	private JMenu creerMenuSort()
 	{
-		JMenu menu = ApplicationSupport.addRadioButton(this, MENU_TRIER_TITRE,
-				new String[]
-				{ MENU_TRIER_SEQUP, MENU_TRIER_SEQDOWN, MENU_TRIER_SURFUP,
-						MENU_TRIER_SURFDOWN, MENU_TRIER_TYPEUP,
-						MENU_TRIER_TYPEDOWN, MENU_TRIER_DIST, MENU_TRIER_ORI });
+		JMenu menu = ApplicationSupport
+				.addRadioButton(this, MENU_TRIER_TITRE,
+						new String[]
+						{ MENU_TRIER_SEQUP, MENU_TRIER_SEQDOWN,
+								MENU_TRIER_SURFUP, MENU_TRIER_SURFDOWN,
+								MENU_TRIER_TYPEUP, MENU_TRIER_TYPEDOWN,
+								MENU_TRIER_WIDTHUP, MENU_TRIER_WIDTHDOWN,
+								MENU_TRIER_HEIGHTUP, MENU_TRIER_HEIGHTDOWN,
+								MENU_TRIER_DIST, MENU_TRIER_ORI });
 
 		menu.getItem(0).addActionListener(new SeqUpListener());
 		menu.getItem(0).setAccelerator(
@@ -418,13 +463,25 @@ public class ApplicationSwing extends JFrame
 		menu.getItem(7).addActionListener(new TypeDownListener());
 		menu.getItem(7).setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_6, ActionEvent.CTRL_MASK));
-		menu.getItem(9).addActionListener(new DistanceListener());
+		menu.getItem(9).addActionListener(new WidthUpListener());
 		menu.getItem(9).setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_5, ActionEvent.CTRL_MASK));
+		menu.getItem(10).addActionListener(new WidthDownListener());
+		menu.getItem(10).setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_6, ActionEvent.CTRL_MASK));
+		menu.getItem(12).addActionListener(new HeightUpListener());
+		menu.getItem(12).setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_5, ActionEvent.CTRL_MASK));
+		menu.getItem(13).addActionListener(new HeightDownListener());
+		menu.getItem(13).setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_6, ActionEvent.CTRL_MASK));
+		menu.getItem(15).addActionListener(new DistanceListener());
+		menu.getItem(15).setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_7, ActionEvent.CTRL_MASK));
-		sortOriginalMenuItem = menu.getItem(10);
+		sortOriginalMenuItem = menu.getItem(16);
 		sortOriginalMenuItem.addActionListener(new OriginalListener());
-		sortOriginalMenuItem.setAccelerator(
-				KeyStroke.getKeyStroke(KeyEvent.VK_8, ActionEvent.CTRL_MASK));
+		sortOriginalMenuItem.setAccelerator(KeyStroke.getKeyStroke(
+				KeyEvent.VK_8, ActionEvent.CTRL_MASK));
 
 		return menu;
 	}
