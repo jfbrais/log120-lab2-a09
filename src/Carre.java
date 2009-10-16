@@ -96,5 +96,6 @@ public class Carre extends Forme
 	
 	public double getDistance()
 	{
+		// getDistance
 	}
 }
