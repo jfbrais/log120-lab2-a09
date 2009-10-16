@@ -92,7 +92,6 @@ public class Carre extends Forme
 	
 	public int getHeight()
 	{
-		return (y2-y1);
 	}
 	
 	public double getDistance()
