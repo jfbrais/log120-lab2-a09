@@ -77,4 +77,18 @@ public class Cercle extends Forme
 	{
 		return Math.PI*rayon*rayon;
 	}
+	
+	public int getWidth()
+	{
+		return (this.rayon * 2);
+	}
+	
+	public int getHeight()
+	{
+		return (this.rayon * 2);
+	}
+	
+	public double getDistance()
+	{
+	}
 }
