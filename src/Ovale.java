@@ -80,4 +80,19 @@ public class Ovale extends Forme
 	{
 		return Math.PI*rayonV*rayonH;
 	}
+	
+	public int getWidth()
+	{
+		return (this.rayonH * 2);
+	}
+	
+	public int getHeigth()
+	{
+		
+	}
+	
+	public double getDistance()
+	{
+		
+	}
 }
