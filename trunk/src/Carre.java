@@ -48,11 +48,9 @@ public class Carre extends Forme
 		this.nseq = nseq;
 
 		couleur = Color.red;
-	}
-	
-	public void setAlpha(int alpha)
-	{
-		couleur = new Color(couleur.getRed(),couleur.getGreen(),couleur.getBlue(),alpha);
+		couleur = new Color(couleur.getRed(), couleur.getGreen(), couleur
+				.getBlue(), 75);
+
 	}
 
 	/**
@@ -68,15 +66,15 @@ public class Carre extends Forme
 		else
 			g.fillRect(x1, y1, x2 - x1, y2 - y1);
 	}
-	
+
 	public void setNewPoint(int emplacement)
 	{
-		x2 = x2-(x1-emplacement);
-		y2 = y2-(y1-emplacement);
+		x2 = x2 - (x1 - emplacement);
+		y2 = y2 - (y1 - emplacement);
 		x1 = emplacement;
 		y1 = emplacement;
 	}
-	
+
 	public void setOriginalPoint()
 	{
 		x1 = x1ori;
@@ -84,24 +82,24 @@ public class Carre extends Forme
 		x2 = x2ori;
 		y2 = y2ori;
 	}
-	
+
 	public double getAire()
 	{
-		return ((x2-x1)*(y2-y1));
+		return ((x2 - x1) * (y2 - y1));
 	}
-	
+
 	public int getWidth()
 	{
-		return (x2-x1);
+		return (x2 - x1);
 	}
-	
+
 	public int getHeight()
 	{
-		return (y2-y1);
+		return (y2 - y1);
 	}
-	
+
 	public double getDistance()
 	{
-		return (((x2-x1)^2 + (y2-y1)^2)^(1/2));
+		return (((x2 - x1) ^ 2 + (y2 - y1) ^ 2) ^ (1 / 2));
 	}
 }

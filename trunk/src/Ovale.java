@@ -46,6 +46,8 @@ public class Ovale extends Forme
 		this.nseq = nseq;
 
 		couleur = Color.blue;
+		couleur = new Color(couleur.getRed(), couleur.getGreen(), couleur
+				.getBlue(), 75);
 	}
 
 	/**
