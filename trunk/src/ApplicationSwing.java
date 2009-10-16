@@ -529,7 +529,6 @@ public class ApplicationSwing extends JFrame
 	/* Lancer l'exécution de l'application. */
 	public static void main(String[] args)
 	{
-
 		/* Créer la fenêtre de l'application. */
 		ApplicationSwing cadre = new ApplicationSwing();
 
