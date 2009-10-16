@@ -17,8 +17,6 @@ import java.text.MessageFormat;
 import java.util.*;
 import javax.swing.*;
 
-import com.sun.corba.se.impl.protocol.giopmsgheaders.MessageBase;
-
 public final class ApplicationSupport
 {
 	static private final String PREFS_BUNDLE_BASENAME = "prefs";
