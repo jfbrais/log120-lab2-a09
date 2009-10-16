@@ -84,4 +84,19 @@ public class Ligne extends Forme
 	{
 		return (((x2-x1)^2 + (y2-y1)^2)^(1/2));
 	}
+	
+	public int getWidth()
+	{
+		return (x2-x1);
+	}
+	
+	public int getHeight()
+	{
+		return (y2-y1);
+	}
+	
+	public double getDistance()
+	{
+		return (((x2-x1)^2 + (y2-y1)^2)^(1/2));
+	}
 }
