@@ -278,7 +278,7 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			// monStocker.sort(new ComparateurNSeqDown());
+			monStocker.sort(new ComparateurTypeUp());
 			repaint();
 		}
 	}
@@ -287,7 +287,7 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			// monStocker.sort(new ComparateurNSeqDown());
+			monStocker.sort(new ComparateurTypeDown());
 			repaint();
 		}
 	}
@@ -465,23 +465,23 @@ public class ApplicationSwing extends JFrame
 				KeyStroke.getKeyStroke(KeyEvent.VK_6, ActionEvent.CTRL_MASK));
 		menu.getItem(9).addActionListener(new WidthUpListener());
 		menu.getItem(9).setAccelerator(
-				KeyStroke.getKeyStroke(KeyEvent.VK_5, ActionEvent.CTRL_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_7, ActionEvent.CTRL_MASK));
 		menu.getItem(10).addActionListener(new WidthDownListener());
 		menu.getItem(10).setAccelerator(
-				KeyStroke.getKeyStroke(KeyEvent.VK_6, ActionEvent.CTRL_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_8, ActionEvent.CTRL_MASK));
 		menu.getItem(12).addActionListener(new HeightUpListener());
 		menu.getItem(12).setAccelerator(
-				KeyStroke.getKeyStroke(KeyEvent.VK_5, ActionEvent.CTRL_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_9, ActionEvent.CTRL_MASK));
 		menu.getItem(13).addActionListener(new HeightDownListener());
 		menu.getItem(13).setAccelerator(
-				KeyStroke.getKeyStroke(KeyEvent.VK_6, ActionEvent.CTRL_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_0, ActionEvent.CTRL_MASK));
 		menu.getItem(15).addActionListener(new DistanceListener());
 		menu.getItem(15).setAccelerator(
-				KeyStroke.getKeyStroke(KeyEvent.VK_7, ActionEvent.CTRL_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, ActionEvent.CTRL_MASK));
 		sortOriginalMenuItem = menu.getItem(16);
 		sortOriginalMenuItem.addActionListener(new OriginalListener());
 		sortOriginalMenuItem.setAccelerator(KeyStroke.getKeyStroke(
-				KeyEvent.VK_8, ActionEvent.CTRL_MASK));
+				KeyEvent.VK_EQUALS, ActionEvent.CTRL_MASK));
 
 		return menu;
 	}
