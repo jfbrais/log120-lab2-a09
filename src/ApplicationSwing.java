@@ -332,7 +332,7 @@ public class ApplicationSwing extends JFrame
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
-			// monStocker.sort(new ComparateurNSeqDown());
+			 monStocker.sort(new ComparateurDistance());
 			 repaint();
 		}
 	}
