@@ -49,6 +49,11 @@ public class Carre extends Forme
 
 		couleur = Color.red;
 	}
+	
+	public void setAlpha(int alpha)
+	{
+		couleur = new Color(couleur.getRed(),couleur.getGreen(),couleur.getBlue(),alpha);
+	}
 
 	/**
 	 * Redéfinition de la méthode abstraite

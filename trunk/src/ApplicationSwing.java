@@ -56,7 +56,9 @@
  https://cours.ele.etsmtl.ca/academique/log120/notesdecours/exemples/lab/lab1/ApplicationSwing.zip
  ********************************************************/
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -71,6 +73,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSlider;
 import javax.swing.KeyStroke;
 
 /*
@@ -138,6 +141,7 @@ public class ApplicationSwing extends JFrame
 
 	private static final String MENU_FICHIER_TITRE = "app.frame.menus.file.title",
 			MENU_FICHIER_OBTENIR = "app.frame.menus.file.get",
+			MENU_FICHIER_OPTIONS = "app.frame.menus.file.options",
 			MENU_FICHIER_QUITTER = "app.frame.menus.file.exit",
 			MENU_TRIER_TITRE = "app.frame.menus.sort.title",
 			MENU_TRIER_SEQUP = "app.frame.menus.sort.seqUp",
@@ -158,6 +162,8 @@ public class ApplicationSwing extends JFrame
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
 
 	private JMenuItem sortOriginalMenuItem;
+	
+	private JMenu sortMenu;
 
 	private static final long serialVersionUID = 1L;
 
@@ -192,6 +198,8 @@ public class ApplicationSwing extends JFrame
 
 			if (connected)
 			{
+				sortMenu.setEnabled(true);
+				
 				for (int i = 0; i < 10; i++)
 					dessinerFormes(i);
 
@@ -417,15 +425,15 @@ public class ApplicationSwing extends JFrame
 	{
 		JMenu menu = ApplicationSupport.addMenu(this, MENU_FICHIER_TITRE,
 				new String[]
-				{ MENU_FICHIER_OBTENIR, MENU_FICHIER_QUITTER });
+				{ MENU_FICHIER_OBTENIR, MENU_FICHIER_OPTIONS, MENU_FICHIER_QUITTER });
 
 		menu.getItem(0).addActionListener(new GetListener());
 		menu.getItem(0).setAccelerator(
 				KeyStroke.getKeyStroke(MENU_FICHIER_OBTENIR_TOUCHE_RACC,
 						MENU_FICHIER_OBTENIR_TOUCHE_MASK));
 
-		menu.getItem(1).addActionListener(new QuitterListener());
-		menu.getItem(1).setAccelerator(
+		menu.getItem(2).addActionListener(new QuitterListener());
+		menu.getItem(2).setAccelerator(
 				KeyStroke.getKeyStroke(MENU_FICHIER_QUITTER_TOUCHE_RACC,
 						MENU_FICHIER_QUITTER_TOUCHE_MASK));
 
@@ -483,6 +491,10 @@ public class ApplicationSwing extends JFrame
 		sortOriginalMenuItem.setAccelerator(KeyStroke.getKeyStroke(
 				KeyEvent.VK_EQUALS, ActionEvent.CTRL_MASK));
 
+		menu.setEnabled(false);
+		
+		sortMenu = menu;
+		
 		return menu;
 	}
 
