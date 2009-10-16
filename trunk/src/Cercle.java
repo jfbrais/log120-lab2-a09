@@ -80,15 +80,16 @@ public class Cercle extends Forme
 	
 	public int getWidth()
 	{
-		return (this.rayon * 2);
+		return (rayon*2);
 	}
 	
 	public int getHeight()
 	{
-		return (this.rayon * 2);
+		return (rayon*2);
 	}
 	
 	public double getDistance()
 	{
+		return (rayon*2);
 	}
 }
