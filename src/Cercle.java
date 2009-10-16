@@ -43,7 +43,9 @@ public class Cercle extends Forme
 		this.setOriginal(ori);
 		this.nseq = nseq;
 
-		couleur = Color.pink;
+		couleur = Color.magenta;
+		couleur = new Color(couleur.getRed(), couleur.getGreen(), couleur
+				.getBlue(), 75);
 	}
 
 	/**

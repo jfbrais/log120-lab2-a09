@@ -47,7 +47,7 @@ public class Ligne extends Forme
 		this.setOriginal(ori);
 		this.nseq = nseq;
 
-		couleur = Color.cyan;
+		couleur = Color.BLACK;
 	}
 
 	/**

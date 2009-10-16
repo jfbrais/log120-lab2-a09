@@ -123,14 +123,6 @@ public class FormeStocker
 			node.setNewPoint(i*40);
 			node = node.getNext();
 		}
-		
-		
-		node = head;
-		for (int i = 0; i < 10; i++)
-		{
-			System.out.println(node.getNseq());
-			node = node.getNext();
-		}
 	}
 	
 	public void setOriginalEmplacement()

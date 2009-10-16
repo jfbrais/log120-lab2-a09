@@ -48,6 +48,8 @@ public class Rectangle extends Forme
 		this.nseq = nseq;
 
 		couleur = Color.green;
+		couleur = new Color(couleur.getRed(), couleur.getGreen(), couleur
+				.getBlue(), 75);
 	}
 
 	/**
