@@ -20,7 +20,6 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.math.*;
 
 public class Cercle extends Forme
 {
