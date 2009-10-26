@@ -24,7 +24,7 @@ all: ApplicationSwing.class
 ApplicationSupport.class: src\ApplicationSupport.java 
  	javac -cp bin src\ApplicationSupport.java -d bin
 
-ApplicationSwing.class: src\ApplicationSwing.java InformationsPaquet.class DecoupeChaine.class SwingWorker.class Forme.class Ligne.class Ovale.class Rectangle.class Cercle.class Carre.class CreateurForme.class FormeStocker.class Connection.class ApplicationSupport.class
+ApplicationSwing.class: src\ApplicationSwing.java InformationsPaquet.class DecoupeChaine.class SwingWorker.class Forme.class Ligne.class Ovale.class Rectangle.class Cercle.class Carre.class CreateurForme.class FormeStocker.class Connection.class ComparateurDistance.class ComparateurHauteurDown.class ComparateurHauteurUp.class ComparateurLargeurDown.class ComparateurLargeurUp.class ComparateurNSeqDown.class ComparateurNSeqUp.class ComparateurOriginal.class ComparateurSurfDown.class ComparateurSurfUp.class ComparateurTypeDown.class ComparateurTypeUp.class ApplicationSupport.class
  	javac -cp bin src\ApplicationSwing.java -d bin
 
 Carre.class: src\Carre.java 
@@ -32,6 +32,42 @@ Carre.class: src\Carre.java
  	
 Cercle.class: src\Cercle.java 
  	javac -cp bin src\Cercle.java -d bin
+ 	
+ComparateurDistance.class: src\ComparateurDistance.java
+	javac -cp bin src\ComparateurDistance.java -d bin 	
+ 	
+ComparateurHauteurDown.class: src\ComparateurHauteurDown.java
+	javac -cp bin src\ComparateurHauteurDown.java -d bin 	
+	
+ComparateurHauteurUp.class: src\ComparateurHauteurUp.java
+	javac -cp bin src\ComparateurHauteurUp.java -d bin 	
+	
+ComparateurLargeurDown.class: src\ComparateurLargeurDown.java
+	javac -cp bin src\ComparateurLargeurDown.java -d bin 	
+	
+ComparateurLargeurUp.class: src\ComparateurLargeurUp.java
+	javac -cp bin src\ComparateurLargeurUp.java -d bin 	
+	
+ComparateurNSeqDown.class: src\ComparateurNSeqDown.java
+	javac -cp bin src\ComparateurNSeqDown.java -d bin 	
+	
+ComparateurNSeqUp.class: src\ComparateurNSeqUp.java
+	javac -cp bin src\ComparateurNSeqUp.java -d bin 	
+	
+ComparateurOriginal.class: src\ComparateurOriginal.java
+	javac -cp bin src\ComparateurOriginal.java -d bin 	
+	
+ComparateurSurfDown.class: src\ComparateurSurfDown.java
+	javac -cp bin src\ComparateurSurfDown.java -d bin 	
+	
+ComparateurSurfUp.class: src\ComparateurSurfUp.java
+	javac -cp bin src\ComparateurSurfUp.java -d bin 
+	
+ComparateurTypeDown.class: src\ComparateurTypeDown.java
+	javac -cp bin src\ComparateurTypeDown.java -d bin 
+	
+ComparateurTypeUp.class: src\ComparateurTypeUp.java
+	javac -cp bin src\ComparateurTypeUp.java -d bin 
  	
 Connection.class: src\Connection.java 
  	javac -cp bin src\Connection.java -d bin
