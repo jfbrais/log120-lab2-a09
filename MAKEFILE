@@ -17,14 +17,12 @@
 # aaaa-mm-jj         Version initiale
 ######################################################
 
-#ca.etsmtl.log.util.jar
-
 all: ApplicationSwing.class
 
 ApplicationSupport.class: src\ApplicationSupport.java 
  	javac -cp bin src\ApplicationSupport.java -d bin
 
-ApplicationSwing.class: src\ApplicationSwing.java InformationsPaquet.class DecoupeChaine.class SwingWorker.class Forme.class Ligne.class Ovale.class Rectangle.class Cercle.class Carre.class CreateurForme.class FormeStocker.class Connection.class ComparateurDistance.class ComparateurHauteurDown.class ComparateurHauteurUp.class ComparateurLargeurDown.class ComparateurLargeurUp.class ComparateurNSeqDown.class ComparateurNSeqUp.class ComparateurOriginal.class ComparateurSurfDown.class ComparateurSurfUp.class ComparateurTypeDown.class ComparateurTypeUp.class ApplicationSupport.class
+ApplicationSwing.class: src\ApplicationSwing.java InformationsPaquet.class DecoupeChaine.class SwingWorker.class Forme.class Ligne.class Ovale.class Rectangle.class Cercle.class Carre.class ComparateurDistance.class ComparateurHauteurDown.class ComparateurHauteurUp.class ComparateurLargeurDown.class ComparateurLargeurUp.class ComparateurNSeqDown.class ComparateurNSeqUp.class ComparateurOriginal.class ComparateurSurfDown.class ComparateurSurfUp.class ComparateurTypeDown.class ComparateurTypeUp.class CreateurForme.class FormeStocker.class Connection.class ApplicationSupport.class
  	javac -cp bin src\ApplicationSwing.java -d bin
 
 Carre.class: src\Carre.java 
@@ -76,7 +74,7 @@ CreateurForme.class: src\CreateurForme.java
  	javac -cp bin src\CreateurForme.java -d bin
  	
 DecoupeChaine.class: src\DecoupeChaine.java
- 	javac -cp ca.etsmtl.log.util.jar;bin src\DecoupeChaine.java -d bin
+ 	javac -cp lib\ca.etsmtl.log.util.jar;bin src\DecoupeChaine.java -d bin
  	
 Forme.class: src\Forme.java 
  	javac -cp bin src\Forme.java -d bin
