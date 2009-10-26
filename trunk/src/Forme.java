@@ -32,15 +32,39 @@ public abstract class Forme
 
 	/**
 	 * Méthode abstraite à reféfinir dans les autres classes héritant de Forme
-	 * 
 	 * @param g
+	 * @param isOriginal
 	 */
 	public abstract void dessiner(Graphics g, boolean isOriginal);
+	
+	/**
+	 * @param emplacement
+	 */
 	public abstract void setNewPoint(int emplacement);
+	
+	/**
+	 * 
+	 */
 	public abstract void setOriginalPoint();
+	
+	/**
+	 * @return double
+	 */
 	public abstract double getAire();
+	
+	/**
+	 * @return int
+	 */
 	public abstract int getWidth();
+	
+	/**
+	 * @return int
+	 */
 	public abstract int getHeight();
+	
+	/**
+	 * @return double
+	 */
 	public abstract double getDistance();
 
 	/**
@@ -75,19 +99,33 @@ public abstract class Forme
 		return next;
 	}
 
+	/**
+	 * @param nseq
+	 */
 	public void setNseq(int nseq)
 	{
 		this.nseq = nseq;
 	}
 
+	/**
+	 * @return nseq
+	 */
 	public int getNseq()
 	{
 		return nseq;
 	}
+	
+	/**
+	 * @param original
+	 */
 	public void setOriginal(int original)
 	{
 		this.original = original;
 	}
+	
+	/**
+	 * @return original
+	 */
 	public int getOriginal()
 	{
 		return original;
