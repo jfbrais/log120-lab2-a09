@@ -1,17 +1,24 @@
-import java.util.Comparator;
-
 /******************************************************
- * Cours : LOG120 Session : Saison automne 2009 Groupe : 03 Projet : Laboratoire
- * #1 Étudiant(e)(s) : Gabriel Desmarais Code(s) perm. : DESG24078908 Professeur
- * : Jocelyn Benoît Chargé de labo.: Vincent Carrier Yanick Rochon Nom du
- * fichier : FormeStocker.java Date créée : 2009-09-29 Date dern. modif. :
- * 2009-09-29
- * 
- ******************************************************* 
- * Historique des modifications
- ******************************************************* 
- * 2009-09-29 : Status Initial
+ Cours :             LOG120
+ Session :           Saison automne 2009
+ Groupe :            03
+ Projet :            Laboratoire #1
+ Étudiant(e)(s) :    Gabriel Desmarais
+ Code(s) perm. :     DESG24078908
+ Professeur :        Jocelyn Benoît
+ Chargé de labo.:    Vincent Carrier
+ 					 Yanick Rochon
+ Nom du fichier :	 FormeStocker.java 					 
+ Date créée :        2009-09-29
+ Date dern. modif. : 2009-09-29
+ 
+ *******************************************************
+ Historique des modifications
+ *******************************************************
+ 2009-09-29 : Status Initial
  *******************************************************/
+
+import java.util.Comparator;
 
 public class FormeStocker
 {
