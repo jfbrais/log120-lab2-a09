@@ -21,7 +21,12 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-/* Classe abstraite */
+/**
+ * Classe abstraite comportant les méthodes de base à redéfinir dans toutes les classes héritant de forme.
+ * 
+ * @author Gab
+ *
+ */
 public abstract class Forme
 {
 	protected int original;
@@ -31,43 +36,56 @@ public abstract class Forme
 	protected int nseq;
 
 	/**
-	 * Méthode abstraite à reféfinir dans les autres classes héritant de Forme
+	 * Méthode qui gère l'affichage des formes.
+	 * 
 	 * @param g
 	 * @param isOriginal
 	 */
 	public abstract void dessiner(Graphics g, boolean isOriginal);
 	
 	/**
+	 * Méthode qui gère l'affectation de nouvelles coordonnées.
+	 * 
 	 * @param emplacement
 	 */
 	public abstract void setNewPoint(int emplacement);
 	
 	/**
-	 * 
+	 * Méthode replacant les coordonées à leur état initiale.
 	 */
 	public abstract void setOriginalPoint();
 	
 	/**
+	 * Méthode retournant l'aire de la forme.
+	 * 
 	 * @return double
 	 */
 	public abstract double getAire();
 	
 	/**
+	 * Méthode retournant la largeur de la forme.
+	 * 
 	 * @return int
 	 */
 	public abstract int getWidth();
 	
 	/**
+	 * Méthode retournant la hauteur de la forme.
+	 * 
 	 * @return int
 	 */
 	public abstract int getHeight();
 	
 	/**
+	 * Méthode retournant la distance de la forme.
+	 * 
 	 * @return double
 	 */
 	public abstract double getDistance();
 
 	/**
+	 * Méthode configurant la forme précédante dans la liste chainée.
+	 * 
 	 * @param previous
 	 */
 	public void setPrevious(Forme previous)
@@ -76,6 +94,8 @@ public abstract class Forme
 	}
 
 	/**
+	 * Méthode retournant la forme précédante dans la liste chainée.
+	 * 
 	 * @return previous
 	 */
 	public Forme getPrevious()
@@ -84,6 +104,8 @@ public abstract class Forme
 	}
 
 	/**
+	 * Méthode configurant la forme suivante dans la liste chainée.
+	 * 
 	 * @param next
 	 */
 	public void setNext(Forme next)
@@ -92,6 +114,8 @@ public abstract class Forme
 	}
 
 	/**
+	 * Méthode retournant la forme suivante dans la liste chainée.
+	 * 
 	 * @return next
 	 */
 	public Forme getNext()
@@ -100,6 +124,8 @@ public abstract class Forme
 	}
 
 	/**
+	 * Méthode configurant le no de séquence de la forme.
+	 * 
 	 * @param nseq
 	 */
 	public void setNseq(int nseq)
@@ -108,6 +134,8 @@ public abstract class Forme
 	}
 
 	/**
+	 * Méthode retournant le no de séquence de la forme
+	 * 
 	 * @return nseq
 	 */
 	public int getNseq()
@@ -116,6 +144,8 @@ public abstract class Forme
 	}
 	
 	/**
+	 * Méthode configurant le no de forme pour garder l'ordre dans lequel le serveur nous l'a envoyé.
+	 * 
 	 * @param original
 	 */
 	public void setOriginal(int original)
@@ -124,6 +154,8 @@ public abstract class Forme
 	}
 	
 	/**
+	 * Méthode retournant le no de la forme dans l'ordre original du serveur.
+	 * 
 	 * @return original
 	 */
 	public int getOriginal()

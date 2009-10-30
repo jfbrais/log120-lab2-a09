@@ -21,7 +21,9 @@
 import java.util.Comparator;
 
 /**
- * @author AJ04310
+ * Comparateur de hauteur pour le tri.
+ * 
+ * @author Gab
  *
  */
 public class ComparateurHauteurUp implements Comparator<Forme>

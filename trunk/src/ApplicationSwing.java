@@ -51,6 +51,9 @@
   				
   2009-10-03	Gabriel Desmarais :
   				Ajustement des classes pour respecter l'idée générale du projet.
+  
+  2009-10-29	Gabriel Desmarais :
+  				Modifications pour les exigences du TP2.
 
  La distribution originale se trouve à 
  https://cours.ele.etsmtl.ca/academique/log120/notesdecours/exemples/lab/lab1/ApplicationSwing.zip
@@ -110,6 +113,8 @@ import javax.swing.KeyStroke;
  */
 
 /**
+ * Classe centrale du programme utilisée pour faire toutes les opérations.
+ * 
  * @author Gab
  * @version 1.3
  */
@@ -186,6 +191,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Traiter l'item "Get...".
+	 *  
+	 * @author Gab
+	 *
+	 */
 	class GetListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -242,6 +253,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri par no de séquence
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class SeqUpListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -251,6 +268,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri par no de séquence
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class SeqDownListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -260,6 +283,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri par surface
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class SurfUpListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -269,6 +298,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri par surface
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class SurfDownListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -278,6 +313,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri par type
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class TypeUpListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -287,6 +328,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri par type
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class TypeDownListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -296,6 +343,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri par largeur
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class WidthUpListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -305,6 +358,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri par largeur
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class WidthDownListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -314,6 +373,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri par hauteur
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class HeightUpListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -323,6 +388,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri par hauteur
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class HeightDownListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -332,6 +403,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri par distance
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class DistanceListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -341,6 +418,12 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
+	/**
+	 * Menu du tri original
+	 * 
+	 * @author Gab
+	 *
+	 */
 	class OriginalListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -416,7 +499,11 @@ public class ApplicationSwing extends JFrame
 		});
 	}
 
-	/* Créer le menu "File". */
+	/**
+	 * Créer le menu "File". 
+	 * 
+	 * @return menu
+	 */
 	private JMenu creerMenuFichier()
 	{
 		JMenu menu = ApplicationSupport.addMenu(this, MENU_FICHIER_TITRE,
@@ -436,7 +523,11 @@ public class ApplicationSwing extends JFrame
 		return menu;
 	}
 
-	/* Créer le menu "Sort". */
+	/**
+	 * Créer le menu "Sort".
+	 * 
+	 * @return menu
+	 */
 	private JMenu creerMenuSort()
 	{
 		JMenu menu = ApplicationSupport
@@ -494,7 +585,11 @@ public class ApplicationSwing extends JFrame
 		return menu;
 	}
 
-	/* Créer le menu "Help". */
+	/**
+	 * Créer le menu "Help".
+	 * 
+	 * @return menu
+	 */
 	private JMenu creerMenuAide()
 	{
 		JMenu menu = ApplicationSupport.addMenu(this, MENU_AIDE_TITRE,
@@ -506,6 +601,11 @@ public class ApplicationSwing extends JFrame
 		return menu;
 	}
 
+	/**
+	 * Dessine les formes reçues.
+	 * 
+	 * @param original
+	 */
 	private void dessinerFormes(int original)
 	{
 		String cmd = maConnection.getForme();
@@ -526,7 +626,11 @@ public class ApplicationSwing extends JFrame
 		}
 	}
 
-	/* Lancer l'exécution de l'application. */
+	/**
+	 * Lancer l'exécution de l'application.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
 		/* Créer la fenêtre de l'application. */

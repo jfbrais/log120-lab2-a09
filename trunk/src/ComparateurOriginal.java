@@ -21,6 +21,8 @@
 import java.util.Comparator;
 
 /**
+ * Comparateur des paramètres originals pour le tri.
+ * 
  * @author Gab
  *
  */

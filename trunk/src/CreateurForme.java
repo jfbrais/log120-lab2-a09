@@ -18,6 +18,12 @@
  2009-09-29 : Status Initial
  *******************************************************/
 
+/**
+ * Classe gérant la créations des nouvelles formes selon les informations reçues.
+ * 
+ * @author Gab
+ *
+ */
 public class CreateurForme
 {
 	/**

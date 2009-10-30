@@ -20,10 +20,21 @@
 
 import java.util.Comparator;
 
+/**
+ * Classe gérant toutes les formes reçues du serveur.
+ * 
+ * @author Gab
+ *
+ */
 public class FormeStocker
 {
 	private Forme head;
 
+	/**
+	 * Permet l'ajout d'une nouvelle forme dans la liste chainée.
+	 * 
+	 * @param newForme
+	 */
 	public void add(Forme newForme)
 	{
 		Forme last;
@@ -50,6 +61,12 @@ public class FormeStocker
 		newForme.setPrevious(last);
 	}
 
+	/**
+	 * Permet l'obtention d'une forme à un endroit précis dans la liste.
+	 * 
+	 * @param emplacement
+	 * @return node
+	 */
 	public Forme getForme(int emplacement)
 	{
 		Forme node = head;
@@ -63,6 +80,11 @@ public class FormeStocker
 		return node;
 	}
 
+	/**
+	 * Gère tous les tris de toutes les formes grâce au comparateur passé en paramètre.
+	 * 
+	 * @param comparateur
+	 */
 	public void sort(Comparator<Forme> comparateur)
 	{
 		Forme current, prev, next;
@@ -132,6 +154,9 @@ public class FormeStocker
 		}
 	}
 	
+	/**
+	 * Remet les formes à leur emplacement d'origine.
+	 */
 	public void setOriginalEmplacement()
 	{
 		Forme node = head;

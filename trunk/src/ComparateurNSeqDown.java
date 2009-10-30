@@ -21,6 +21,8 @@
 import java.util.Comparator;
 
 /**
+ * Comparateur de no de séquence pour le tri.
+ * 
  * @author Gab
  *
  */

@@ -28,6 +28,12 @@ import java.net.UnknownHostException;
 
 import javax.swing.JOptionPane;
 
+/**
+ * Classe gérant la connexion avec le serveur.
+ * 
+ * @author Gab
+ *
+ */
 public class Connection
 {
 	private Socket connect;
