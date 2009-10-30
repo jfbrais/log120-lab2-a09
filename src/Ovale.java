@@ -21,6 +21,12 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * Classe Ovale pour faire afficher des Ovales dans le programme.
+ * 
+ * @author Gab
+ *
+ */
 public class Ovale extends Forme
 {
 	private int centreX, centreY, rayonH, rayonV, centreXori, centreYori;
@@ -50,11 +56,6 @@ public class Ovale extends Forme
 				.getBlue(), 75);
 	}
 
-	/**
-	 * Redéfinition de la méthode abstraite
-	 * 
-	 * @see Forme#dessiner(java.awt.Graphics)
-	 */
 	public void dessiner(Graphics g, boolean isOriginal)
 	{
 		g.setColor(couleur);

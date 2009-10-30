@@ -21,6 +21,12 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * Classe Rectangle pour faire afficher des Rectangles dans le programme.
+ * 
+ * @author Gab
+ *
+ */
 public class Rectangle extends Forme
 {
 	private int x1, y1, x2, y2, x1ori, y1ori, x2ori, y2ori;

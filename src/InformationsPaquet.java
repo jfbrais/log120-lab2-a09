@@ -18,6 +18,12 @@
  2009-09-29 : Status Initial
  *******************************************************/
 
+/**
+ * Classe contenant les informations séparées de la chaine de caractère reçue du serveur.
+ * 
+ * @author Gab
+ *
+ */
 public class InformationsPaquet
 {
 	private int nseq;
@@ -44,8 +50,9 @@ public class InformationsPaquet
 		this.setParams(param4,3);
 	}
 
-	/* Différents Sets et Gets */
 	/**
+	 * Configure le no de séquence.
+	 * 
 	 * @param nseq
 	 */
 	private void setNseq(int nseq)
@@ -54,6 +61,8 @@ public class InformationsPaquet
 	}
 
 	/**
+	 * Retourne le no de séquence.
+	 * 
 	 * @return nseq
 	 */
 	public int getNseq()
@@ -62,6 +71,8 @@ public class InformationsPaquet
 	}
 
 	/**
+	 * Configure le type.
+	 * 
 	 * @param type
 	 */
 	private void setType(String type)
@@ -70,6 +81,8 @@ public class InformationsPaquet
 	}
 
 	/**
+	 * Retourne le type.
+	 * 
 	 * @return type
 	 */
 	public String getType()
@@ -78,6 +91,8 @@ public class InformationsPaquet
 	}
 	
 	/**
+	 * Configure un paramètre.
+	 * 
 	 * @param param
 	 * @param numParam
 	 */
@@ -87,6 +102,8 @@ public class InformationsPaquet
 	}
 
 	/**
+	 * Retourne un paramètre.
+	 * 
 	 * @param numParam
 	 * @return param[numParam]
 	 */

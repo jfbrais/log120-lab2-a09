@@ -21,6 +21,8 @@
 import java.util.Comparator;
 
 /**
+ * Comparateur de distance pour le tri.
+ * 
  * @author Gab
  *
  */

@@ -22,6 +22,11 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import ca.etsmtl.log.util.IDLogger;
 
+/**
+ * Classe gérant la séparations des informations reçues dans un format plus utile et compréhensible.
+ * @author Gab
+ *
+ */
 public class DecoupeChaine
 {
 	private static IDLogger logger = IDLogger.getInstance();

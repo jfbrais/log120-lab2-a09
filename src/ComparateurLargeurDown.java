@@ -21,7 +21,9 @@
 import java.util.Comparator;
 
 /**
- * @author AJ04310
+ * Comparateur de largeur pour le tri.
+ * 
+ * @author Gab
  *
  */
 public class ComparateurLargeurDown implements Comparator<Forme>

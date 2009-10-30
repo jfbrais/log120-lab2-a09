@@ -21,6 +21,12 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * Classe Cercle pour faire afficher des Cercles dans le programme.
+ * 
+ * @author Gab
+ *
+ */
 public class Cercle extends Forme
 {
 	private int centreX, centreY, rayon, centreXori, centreYori;
@@ -48,11 +54,6 @@ public class Cercle extends Forme
 				.getBlue(), 75);
 	}
 
-	/**
-	 * Redéfinition de la méthode abstraite
-	 * 
-	 * @see Forme#dessiner(java.awt.Graphics)
-	 */
 	public void dessiner(Graphics g, boolean isOriginal)
 	{
 		g.setColor(couleur);

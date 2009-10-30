@@ -21,6 +21,8 @@
 import java.util.Comparator;
 
 /**
+ * Comparateur de surface pour le tri.
+ * 
  * @author Gab
  *
  */

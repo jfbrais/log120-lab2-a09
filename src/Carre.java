@@ -21,6 +21,12 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * Classe Carré pour faire afficher des Carrés dans le programme.
+ * 
+ * @author Gab
+ *
+ */
 public class Carre extends Forme
 {
 	private int x1, y1, x2, y2, x1ori, y1ori, x2ori, y2ori;
@@ -53,11 +59,6 @@ public class Carre extends Forme
 
 	}
 
-	/**
-	 * Redéfinition de la méthode abstraite
-	 * 
-	 * @see Forme#dessiner(java.awt.Graphics)
-	 */
 	public void dessiner(Graphics g, boolean isOriginal)
 	{
 		g.setColor(couleur);

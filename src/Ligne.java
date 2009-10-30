@@ -21,6 +21,12 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * Classe Ligne pour faire afficher des Lignes dans le programme.
+ * 
+ * @author Gab
+ *
+ */
 public class Ligne extends Forme
 {
 	private int x1, y1, x2, y2, x1ori, y1ori, x2ori, y2ori;
@@ -50,11 +56,6 @@ public class Ligne extends Forme
 		couleur = Color.BLACK;
 	}
 
-	/**
-	 * Redéfinition de la méthode abstraite
-	 * 
-	 * @see Forme#dessiner(java.awt.Graphics)
-	 */
 	public void dessiner(Graphics g, boolean isOriginal)
 	{
 		g.setColor(couleur);
