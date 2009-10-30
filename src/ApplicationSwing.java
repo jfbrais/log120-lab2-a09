@@ -4,13 +4,15 @@
  Groupe :            03
  Projet :            Laboratoire #1
  Étudiant(e)(s) :    Gabriel Desmarais
+ 					 Jean-François Brais-Villemur
  Code(s) perm. :     DESG24078908
+ 					 BRAJ14088901
  Professeur :        Jocelyn Benoît
  Chargé de labo.:    Vincent Carrier
  					 Yanick Rochon
  Nom du fichier :	 ApplicationSwing.java
  Date créée :        2002-05-28
- Date dern. modif. : 2009-09-29
+ Date dern. modif. : 2009-10-29
  
  *******************************************************
  Historique des modifications
