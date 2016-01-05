@@ -1,0 +1,1 @@
+Travail à faire en équipe. Nous avons donc besoin d'un serveur SVN auquel se connecter pour travailler à plusieurs.
